@@ -1,103 +1,157 @@
-import Image from "next/image";
+import Image from "next/image"
+import Link from "next/link"
+import Navigation from "@/components/Navigation"
+import Footer from "@/components/Footer"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { BookOpen, Calculator, Users, Mail } from "lucide-react"
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <Navigation />
+      <main className="min-h-screen">
+        {/* Hero Section */}
+        <section className="relative bg-gradient-to-br from-teal/20 to-gold/20 py-20 md:py-32">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight">
+                  Helping Deaf Students Succeed with Personalised Tutoring!
+                </h1>
+                <p className="text-xl md:text-2xl text-navy/80">
+                  Supporting secondary students in English and Maths, making learning clear, engaging, and effective.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6">
+                    <Link href="/contact">Get Started</Link>
+                  </Button>
+                  <Button asChild size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary/10 text-lg px-8 py-6">
+                    <Link href="/services">Our Services</Link>
+                  </Button>
+                </div>
+              </div>
+              <div className="flex justify-center lg:justify-end">
+                <Image
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/hero-1759346019763.png"
+                  alt="Tutoring for the Deaf Logo"
+                  width={500}
+                  height={500}
+                  className="w-full max-w-md lg:max-w-lg"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+        {/* Services Overview */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">What We Offer</h2>
+              <p className="text-xl text-navy/70 max-w-2xl mx-auto">
+                Specialised tutoring services designed for deaf students
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <Card className="border-2 hover:border-primary transition-colors">
+                <CardContent className="p-6 text-center space-y-4">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                    <BookOpen className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold text-navy">English Tutoring</h3>
+                  <p className="text-navy/70">Comprehensive English language support tailored to your needs</p>
+                </CardContent>
+              </Card>
+              <Card className="border-2 hover:border-secondary transition-colors">
+                <CardContent className="p-6 text-center space-y-4">
+                  <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
+                    <Calculator className="w-8 h-8 text-secondary" />
+                  </div>
+                  <h3 className="text-xl font-bold text-navy">Maths Tutoring</h3>
+                  <p className="text-navy/70">Clear and engaging mathematics instruction for all levels</p>
+                </CardContent>
+              </Card>
+              <Card className="border-2 hover:border-primary transition-colors">
+                <CardContent className="p-6 text-center space-y-4">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                    <Users className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold text-navy">1:1 Support</h3>
+                  <p className="text-navy/70">Personalised one-to-one tutoring sessions focused on your goals</p>
+                </CardContent>
+              </Card>
+              <Card className="border-2 hover:border-secondary transition-colors">
+                <CardContent className="p-6 text-center space-y-4">
+                  <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
+                    <Mail className="w-8 h-8 text-secondary" />
+                  </div>
+                  <h3 className="text-xl font-bold text-navy">Homework Help</h3>
+                  <p className="text-navy/70">Assistance with homework and test preparation</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Qualifications Section */}
+        <section className="py-20 bg-cream">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">Expert Qualifications</h2>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-primary rounded-full flex-shrink-0 mt-1"></div>
+                    <p className="text-lg text-navy">Specialist Deaf Tutor with extensive experience</p>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-secondary rounded-full flex-shrink-0 mt-1"></div>
+                    <p className="text-lg text-navy">Degrees in Teaching and Deaf Education</p>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-primary rounded-full flex-shrink-0 mt-1"></div>
+                    <p className="text-lg text-navy">10+ Years Experience Working with Deaf Children</p>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-secondary rounded-full flex-shrink-0 mt-1"></div>
+                    <p className="text-lg text-navy">Fluent in B.S.L (British Sign Language)</p>
+                  </li>
+                </ul>
+                <div className="mt-8">
+                  <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-navy text-lg px-8 py-6">
+                    <Link href="/about">Learn More About Me</Link>
+                  </Button>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <Image
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1759346072605.png"
+                  alt="Tutoring Services"
+                  width={500}
+                  height={600}
+                  className="w-full max-w-md rounded-lg shadow-xl"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-r from-primary to-secondary">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Let's Study Together!</h2>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              Ready to start your learning journey? Get in touch today for personalised tutoring support.
+            </p>
+            <Button asChild size="lg" variant="secondary" className="bg-white hover:bg-white/90 text-primary text-lg px-8 py-6">
+              <Link href="/contact">Contact Us Now</Link>
+            </Button>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      <Footer />
+    </>
+  )
 }
