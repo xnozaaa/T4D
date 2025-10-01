@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Mail, Globe, Send } from "lucide-react"
 import { useState } from "react"
+import { toast } from "sonner"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -17,15 +18,34 @@ export default function ContactPage() {
     phone: "",
     message: ""
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Create mailto link with form data
-    const subject = encodeURIComponent(`Tutoring Inquiry from ${formData.name}`)
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
-    )
-    window.location.href = `mailto:tutoringforthedeaf@gmail.com?subject=${subject}&body=${body}`
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        toast.success('Message sent successfully! I\'ll get back to you soon.')
+        setFormData({ name: "", email: "", phone: "", message: "" })
+      } else {
+        toast.error(data.error || 'Failed to send message. Please try again.')
+      }
+    } catch (error) {
+      toast.error('Failed to send message. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -74,6 +94,7 @@ export default function ContactPage() {
                             required
                             value={formData.name}
                             onChange={handleChange}
+                            disabled={isSubmitting}
                             className="h-12 text-base"
                           />
                         </div>
@@ -87,6 +108,7 @@ export default function ContactPage() {
                             required
                             value={formData.email}
                             onChange={handleChange}
+                            disabled={isSubmitting}
                             className="h-12 text-base"
                           />
                         </div>
@@ -100,6 +122,7 @@ export default function ContactPage() {
                           placeholder="Your phone number"
                           value={formData.phone}
                           onChange={handleChange}
+                          disabled={isSubmitting}
                           className="h-12 text-base"
                         />
                       </div>
@@ -112,6 +135,7 @@ export default function ContactPage() {
                           required
                           value={formData.message}
                           onChange={handleChange}
+                          disabled={isSubmitting}
                           rows={6}
                           className="text-base resize-none"
                         />
@@ -119,10 +143,11 @@ export default function ContactPage() {
                       <Button
                         type="submit"
                         size="lg"
-                        className="w-full bg-primary hover:bg-primary/90 text-white text-lg h-12"
+                        disabled={isSubmitting}
+                        className="w-full bg-primary hover:bg-primary/90 text-white text-lg h-12 disabled:opacity-50"
                       >
                         <Send className="w-5 h-5 mr-2" />
-                        Send Message
+                        {isSubmitting ? 'Sending...' : 'Send Message'}
                       </Button>
                     </form>
                   </CardContent>
