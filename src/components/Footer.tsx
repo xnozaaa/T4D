@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Mail, Globe } from "lucide-react"
+import { Mail, Globe, Instagram } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -63,6 +63,17 @@ export default function Footer() {
                   className="text-gray-300 hover:text-gold transition-colors text-base break-all"
                 >
                   www.tutoringforthedeaf.co.uk
+                </a>
+              </li>
+              <li className="flex items-start gap-2">
+                <Instagram className="h-5 w-5 text-gold mt-0.5 flex-shrink-0" />
+                <a
+                  href="https://www.instagram.com/tutoringforthedeaf/?utm_source=ig_web_button_share_sheet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-gold transition-colors text-base break-all"
+                >
+                  @tutoringforthedeaf
                 </a>
               </li>
             </ul>
