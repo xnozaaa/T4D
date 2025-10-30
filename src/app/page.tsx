@@ -5,6 +5,12 @@ import Footer from "@/components/Footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { BookOpen, Calculator, Users, Mail } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Tutoring for the Deaf - Personalised English & Maths Support",
+  description: "Supporting secondary deaf students with expert tutoring in English and Maths. 10+ years experience, B.S.L fluent, and specialist qualifications in Deaf Education.",
+}
 
 export default function Home() {
   return (
