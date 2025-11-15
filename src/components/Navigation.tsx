@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Instagram } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function Navigation() {
@@ -43,6 +43,15 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href="https://www.instagram.com/tutoringforthedeaf/?utm_source=ig_web_button_share_sheet"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 rounded-md p-2 text-foreground transition-colors hover:bg-primary/10 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+              aria-label="Follow us on Instagram"
+            >
+              <Instagram className="h-6 w-6" />
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -74,6 +83,16 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href="https://www.instagram.com/tutoringforthedeaf/?utm_source=ig_web_button_share_sheet"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 rounded-md px-4 py-3 text-lg font-medium text-foreground transition-colors hover:bg-primary/10 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+              onClick={() => setIsOpen(false)}
+            >
+              <Instagram className="h-5 w-5" />
+              Instagram
+            </a>
           </div>
         </div>
       )}
