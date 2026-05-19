@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Mail, Globe, Send } from "lucide-react"
+import { Mail, Globe, Send, CheckCircle2 } from "lucide-react"
 import { useState } from "react"
 import { toast } from "sonner"
 
@@ -41,7 +41,7 @@ export default function ContactPage() {
       } else {
         toast.error(data.error || 'Failed to send message. Please try again.')
       }
-    } catch (error) {
+    } catch {
       toast.error('Failed to send message. Please try again.')
     } finally {
       setIsSubmitting(false)
@@ -59,11 +59,16 @@ export default function ContactPage() {
     <>
       <Navigation />
       <main className="min-h-screen">
+
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-primary/20 to-secondary/20 py-20">
+        <section className="bg-[#BFEAEA]/25 py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-navy mb-6">Get In Touch</h1>
-            <p className="text-xl text-navy/80 max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-white text-[#00AEB0] font-semibold text-sm px-4 py-1.5 rounded-full border border-[#BDE3E4] mb-6 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#00AEB0]" />
+              We'd Love to Hear From You
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-[#0B1724] mb-6">Get In Touch</h1>
+            <p className="text-xl text-[#0B1724]/70 max-w-3xl mx-auto">
               Ready to start your learning journey? Contact me today to discuss your tutoring needs.
             </p>
           </div>
@@ -73,20 +78,21 @@ export default function ContactPage() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
               {/* Contact Form */}
               <div className="lg:col-span-2">
-                <Card className="border-2">
-                  <CardHeader>
-                    <CardTitle className="text-3xl text-navy">Send Me a Message</CardTitle>
-                    <CardDescription className="text-lg">
-                      Fill out the form below and I'll get back to you as soon as possible.
+                <Card className="border border-[#BDE3E4] rounded-2xl shadow-sm">
+                  <CardHeader className="px-8 pt-8 pb-2">
+                    <CardTitle className="text-2xl text-[#0B1724]">Send Me a Message</CardTitle>
+                    <CardDescription className="text-base text-[#0B1724]/60">
+                      Fill out the form below and I&apos;ll get back to you as soon as possible.
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="px-8 pb-8 pt-4">
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <Label htmlFor="name" className="text-base">Name *</Label>
+                          <Label htmlFor="name" className="text-sm font-semibold text-[#0B1724]">Name *</Label>
                           <Input
                             id="name"
                             name="name"
@@ -95,11 +101,11 @@ export default function ContactPage() {
                             value={formData.name}
                             onChange={handleChange}
                             disabled={isSubmitting}
-                            className="h-12 text-base"
+                            className="h-12 text-base rounded-xl border-[#BDE3E4] focus:border-[#00AEB0] focus:ring-[#00AEB0]/20"
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="email" className="text-base">Email *</Label>
+                          <Label htmlFor="email" className="text-sm font-semibold text-[#0B1724]">Email *</Label>
                           <Input
                             id="email"
                             name="email"
@@ -109,12 +115,12 @@ export default function ContactPage() {
                             value={formData.email}
                             onChange={handleChange}
                             disabled={isSubmitting}
-                            className="h-12 text-base"
+                            className="h-12 text-base rounded-xl border-[#BDE3E4] focus:border-[#00AEB0] focus:ring-[#00AEB0]/20"
                           />
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="phone" className="text-base">Phone (Optional)</Label>
+                        <Label htmlFor="phone" className="text-sm font-semibold text-[#0B1724]">Phone (Optional)</Label>
                         <Input
                           id="phone"
                           name="phone"
@@ -123,11 +129,11 @@ export default function ContactPage() {
                           value={formData.phone}
                           onChange={handleChange}
                           disabled={isSubmitting}
-                          className="h-12 text-base"
+                          className="h-12 text-base rounded-xl border-[#BDE3E4] focus:border-[#00AEB0] focus:ring-[#00AEB0]/20"
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="message" className="text-base">Message *</Label>
+                        <Label htmlFor="message" className="text-sm font-semibold text-[#0B1724]">Message *</Label>
                         <Textarea
                           id="message"
                           name="message"
@@ -137,14 +143,14 @@ export default function ContactPage() {
                           onChange={handleChange}
                           disabled={isSubmitting}
                           rows={6}
-                          className="text-base resize-none"
+                          className="text-base resize-none rounded-xl border-[#BDE3E4] focus:border-[#00AEB0] focus:ring-[#00AEB0]/20"
                         />
                       </div>
                       <Button
                         type="submit"
                         size="lg"
                         disabled={isSubmitting}
-                        className="w-full bg-primary hover:bg-primary/90 text-white text-lg h-12 disabled:opacity-50"
+                        className="w-full rounded-xl bg-[#00AEB0] hover:bg-[#008C8E] text-white font-semibold text-base h-12 disabled:opacity-50 shadow-md shadow-[#00AEB0]/20 transition-all"
                       >
                         <Send className="w-5 h-5 mr-2" />
                         {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -156,36 +162,36 @@ export default function ContactPage() {
 
               {/* Contact Info */}
               <div className="space-y-6">
-                <Card className="border-2 border-primary/30">
-                  <CardHeader className="bg-primary/5">
-                    <CardTitle className="text-2xl text-navy">Contact Information</CardTitle>
+                <Card className="border border-[#BDE3E4] rounded-2xl shadow-sm overflow-hidden">
+                  <CardHeader className="bg-[#BFEAEA]/30 px-7 pt-7 pb-4">
+                    <CardTitle className="text-xl text-[#0B1724]">Contact Information</CardTitle>
                   </CardHeader>
-                  <CardContent className="pt-6 space-y-6">
+                  <CardContent className="pt-6 pb-7 px-7 space-y-6">
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Mail className="w-6 h-6 text-primary" />
+                      <div className="w-11 h-11 bg-[#BFEAEA]/60 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Mail className="w-5 h-5 text-[#00AEB0]" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-navy mb-1">Email</h3>
+                        <h3 className="font-bold text-[#0B1724] mb-1 text-sm">Email</h3>
                         <a
                           href="mailto:tutoringforthedeaf@gmail.com"
-                          className="text-navy/70 hover:text-primary transition-colors break-all"
+                          className="text-[#0B1724]/65 hover:text-[#00AEB0] transition-colors break-all text-sm"
                         >
                           tutoringforthedeaf@gmail.com
                         </a>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Globe className="w-6 h-6 text-secondary" />
+                      <div className="w-11 h-11 bg-[#BFEAEA]/60 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Globe className="w-5 h-5 text-[#00AEB0]" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-navy mb-1">Website</h3>
+                        <h3 className="font-bold text-[#0B1724] mb-1 text-sm">Website</h3>
                         <a
                           href="http://www.tutoringforthedeaf.co.uk"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-navy/70 hover:text-secondary transition-colors break-all"
+                          className="text-[#0B1724]/65 hover:text-[#00AEB0] transition-colors break-all text-sm"
                         >
                           www.tutoringforthedeaf.co.uk
                         </a>
@@ -194,20 +200,27 @@ export default function ContactPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-2 border-secondary/30">
-                  <CardHeader className="bg-secondary/5">
-                    <CardTitle className="text-2xl text-navy">Let's Study Together!</CardTitle>
+                <Card className="border border-[#BDE3E4] rounded-2xl shadow-sm bg-[#0B1724] text-white">
+                  <CardHeader className="px-7 pt-7 pb-3">
+                    <CardTitle className="text-xl text-white">Let&apos;s Study Together!</CardTitle>
                   </CardHeader>
-                  <CardContent className="pt-6">
-                    <p className="text-navy/70 mb-4">
-                      I'm here to help you succeed in your English and Maths studies. Get in touch today 
+                  <CardContent className="pb-7 px-7">
+                    <p className="text-[#BFEAEA]/75 mb-5 text-sm leading-relaxed">
+                      I&apos;m here to help you succeed in your English and Maths studies. Get in touch today
                       to discuss how we can work together!
                     </p>
-                    <div className="space-y-2 text-sm text-navy/60">
-                      <p>✓ Personalised 1:1 sessions</p>
-                      <p>✓ Fluent B.S.L communication</p>
-                      <p>✓ Flexible scheduling</p>
-                      <p>✓ Experienced specialist tutor</p>
+                    <div className="space-y-2.5">
+                      {[
+                        "Personalised 1:1 sessions",
+                        "Fluent B.S.L communication",
+                        "Flexible scheduling",
+                        "Experienced specialist tutor",
+                      ].map((item) => (
+                        <div key={item} className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-[#00AEB0] flex-shrink-0" />
+                          <span className="text-sm text-[#BFEAEA]/80">{item}</span>
+                        </div>
+                      ))}
                     </div>
                   </CardContent>
                 </Card>
@@ -217,56 +230,43 @@ export default function ContactPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-cream">
+        <section className="py-20 bg-[#BFEAEA]/20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-12">Frequently Asked Questions</h2>
-            <div className="max-w-3xl mx-auto space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-xl text-navy">What age groups do you tutor?</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-navy/70">
-                    I specialise in tutoring secondary school students (ages 11-18) in both English and Maths.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-xl text-navy">How are sessions conducted?</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-navy/70">
-                    Sessions can be conducted online or in-person, depending on your preference and location. 
-                    All sessions include full B.S.L support.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-xl text-navy">What qualifications do you have?</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-navy/70">
-                    I hold degrees in both Teaching and Deaf Education, with over 10 years of experience 
-                    working with deaf children. I am also fluent in British Sign Language.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-xl text-navy">How do I get started?</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-navy/70">
-                    Simply fill out the contact form above or email me directly. We'll arrange an initial 
-                    consultation to discuss your needs and goals.
-                  </p>
-                </CardContent>
-              </Card>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0B1724] mb-3">Frequently Asked Questions</h2>
+            </div>
+            <div className="max-w-3xl mx-auto space-y-4">
+              {[
+                {
+                  q: "What age groups do you tutor?",
+                  a: "I specialise in tutoring secondary school students (ages 11-18) in both English and Maths.",
+                },
+                {
+                  q: "How are sessions conducted?",
+                  a: "Sessions can be conducted online or in-person, depending on your preference and location. All sessions include full B.S.L support.",
+                },
+                {
+                  q: "What qualifications do you have?",
+                  a: "I hold degrees in both Teaching and Deaf Education, with over 10 years of experience working with deaf children. I am also fluent in British Sign Language.",
+                },
+                {
+                  q: "How do I get started?",
+                  a: "Simply fill out the contact form above or email me directly. We'll arrange an initial consultation to discuss your needs and goals.",
+                },
+              ].map((faq) => (
+                <Card key={faq.q} className="border border-[#BDE3E4] rounded-2xl shadow-sm bg-white">
+                  <CardHeader className="px-7 pt-6 pb-2">
+                    <CardTitle className="text-lg text-[#0B1724]">{faq.q}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="px-7 pb-6">
+                    <p className="text-[#0B1724]/65 leading-relaxed">{faq.a}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
+
       </main>
       <Footer />
     </>

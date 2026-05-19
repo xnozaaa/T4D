@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" fill="none" aria-label="Tutoring for the Deaf">
+  <!-- Icon mark: open book with ear wave -->
+  <g>
+    <!-- Book base -->
+    <rect x="4" y="18" width="52" height="34" rx="4" fill="#BFEAEA"/>
+    <!-- Book spine -->
+    <rect x="28" y="18" width="4" height="34" fill="#00AEB0"/>
+    <!-- Left page lines -->
+    <rect x="10" y="26" width="14" height="2.5" rx="1.2" fill="#00AEB0" opacity="0.7"/>
+    <rect x="10" y="32" width="14" height="2.5" rx="1.2" fill="#00AEB0" opacity="0.7"/>
+    <rect x="10" y="38" width="14" height="2.5" rx="1.2" fill="#00AEB0" opacity="0.7"/>
+    <!-- Right page lines -->
+    <rect x="36" y="26" width="14" height="2.5" rx="1.2" fill="#0B1724" opacity="0.3"/>
+    <rect x="36" y="32" width="14" height="2.5" rx="1.2" fill="#0B1724" opacity="0.3"/>
+    <rect x="36" y="38" width="14" height="2.5" rx="1.2" fill="#0B1724" opacity="0.3"/>
+    <!-- Sound/ear waves emanating from right -->
+    <path d="M56 28 Q62 35 56 42" stroke="#00AEB0" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <path d="M59 24 Q68 35 59 46" stroke="#00AEB0" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="76" y="33" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="700" font-size="16" fill="#0B1724" letter-spacing="-0.3">TUTORING FOR</text>
+  <text x="76" y="53" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="800" font-size="18" fill="#00AEB0" letter-spacing="-0.3">THE DEAF</text>
+</svg>

@@ -9,17 +9,9 @@
 /* Updated: 2025-10-04T07:40:52.451Z */
 /* Updated: 2025-10-04T03:34:22.899Z */
 /* Updated: 2025-10-03T23:44:20.719Z */
-/* Updated: 2025-10-03T23:20:33.589Z */
 /* Updated: 2025-10-03T23:20:28.770Z */
-/* Updated: 2025-10-03T23:04:31.034Z */
-/* Updated: 2025-10-03T23:04:26.232Z */
-/* Updated: 2025-10-03T22:48:32.947Z */
-/* Updated: 2025-10-03T22:48:28.774Z */
+/* Updated: 2025-10-03T23:04:31.003Z */
 /* Updated: 2025-10-03T22:32:34.784Z */
-/* Updated: 2025-10-03T22:32:30.106Z */
-/* Updated: 2025-10-03T22:16:20.090Z */
-/* Updated: 2025-10-01T19:50:52.490Z */
-/* Updated: 2025-10-01T19:14:44.714Z */
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -29,9 +21,9 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-teal: var(--teal);
-  --color-gold: var(--gold);
   --color-navy: var(--navy);
-  --color-cream: var(--cream);
+  --color-pale-aqua: var(--pale-aqua);
+  --color-off-white: var(--off-white);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -70,76 +62,79 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(0.99 0 0);
-  --foreground: oklch(0.2 0.02 250);
-  --teal: oklch(0.7 0.08 200);
-  --gold: oklch(0.75 0.12 70);
-  --navy: oklch(0.25 0.03 250);
-  --cream: oklch(0.95 0.02 80);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.02 250);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.02 250);
-  --primary: oklch(0.7 0.08 200);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.75 0.12 70);
-  --secondary-foreground: oklch(0.2 0.02 250);
-  --muted: oklch(0.95 0.02 80);
-  --muted-foreground: oklch(0.5 0.02 250);
-  --accent: oklch(0.75 0.12 70);
-  --accent-foreground: oklch(0.2 0.02 250);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.85 0.02 200);
-  --input: oklch(0.9 0.02 200);
-  --ring: oklch(0.7 0.08 200);
-  --chart-1: oklch(0.7 0.08 200);
-  --chart-2: oklch(0.75 0.12 70);
-  --chart-3: oklch(0.25 0.03 250);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --radius: 0.75rem;
+
+  /* TFD Brand Colours */
+  --navy:       #0B1724;
+  --teal:       #00AEB0;
+  --teal-dark:  #008C8E;
+  --pale-aqua:  #BFEAEA;
+  --off-white:  #F7F8FC;
+
+  /* Semantic Tokens */
+  --background:          #F7F8FC;
+  --foreground:          #0B1724;
+  --primary:             #00AEB0;
+  --primary-foreground:  #ffffff;
+  --secondary:           #BFEAEA;
+  --secondary-foreground: #0B1724;
+  --muted:               #EAF6F6;
+  --muted-foreground:    #4A6275;
+  --accent:              #00AEB0;
+  --accent-foreground:   #ffffff;
+  --card:                #ffffff;
+  --card-foreground:     #0B1724;
+  --popover:             #ffffff;
+  --popover-foreground:  #0B1724;
+  --border:              #BDE3E4;
+  --input:               #D5EEEF;
+  --ring:                #00AEB0;
+  --destructive:         oklch(0.577 0.245 27.325);
+
+  --chart-1: #00AEB0;
+  --chart-2: #BFEAEA;
+  --chart-3: #0B1724;
+  --chart-4: #008C8E;
+  --chart-5: #4A6275;
+
+  --sidebar:                     #F7F8FC;
+  --sidebar-foreground:          #0B1724;
+  --sidebar-primary:             #0B1724;
+  --sidebar-primary-foreground:  #F7F8FC;
+  --sidebar-accent:              #EAF6F6;
+  --sidebar-accent-foreground:   #0B1724;
+  --sidebar-border:              #BDE3E4;
+  --sidebar-ring:                #00AEB0;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: #0B1724;
+  --foreground: #F7F8FC;
+  --card: #162232;
+  --card-foreground: #F7F8FC;
+  --popover: #162232;
+  --popover-foreground: #F7F8FC;
+  --primary: #00AEB0;
+  --primary-foreground: #ffffff;
+  --secondary: #1F3040;
+  --secondary-foreground: #F7F8FC;
+  --muted: #1F3040;
+  --muted-foreground: #8AAABB;
+  --accent: #00AEB0;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --border: rgba(0, 174, 176, 0.2);
+  --input: rgba(0, 174, 176, 0.15);
+  --ring: #00AEB0;
+
+  --sidebar: #162232;
+  --sidebar-foreground: #F7F8FC;
+  --sidebar-primary: #00AEB0;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1F3040;
+  --sidebar-accent-foreground: #F7F8FC;
+  --sidebar-border: rgba(0, 174, 176, 0.2);
+  --sidebar-ring: #00AEB0;
 }
 
 @layer base {
@@ -148,8 +143,17 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   }
 }
+
+/* Utility classes for brand colours */
+.bg-navy    { background-color: var(--navy); }
+.bg-teal    { background-color: var(--teal); }
+.bg-pale-aqua { background-color: var(--pale-aqua); }
+.bg-off-white { background-color: var(--off-white); }
+.text-teal  { color: var(--teal); }
+.text-navy  { color: var(--navy); }
 
 /* Hide Next.js error overlay portal */
 nextjs-portal {

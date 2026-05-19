@@ -17,16 +17,16 @@ export default function Navigation() {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="sticky top-0 z-50 w-full border-b border-[#BDE3E4]/60 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
+          <Link href="/" className="flex items-center flex-shrink-0">
             <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/logo-1759346031353.png"
+              src="/logo-light.svg"
               alt="Tutoring for the Deaf"
-              width={200}
-              height={60}
+              width={220}
+              height={52}
               className="h-12 w-auto"
               priority
             />
@@ -38,7 +38,7 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-md px-4 py-2 text-lg font-medium text-foreground transition-colors hover:bg-primary/10 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                className="rounded-lg px-4 py-2 text-base font-medium text-[#0B1724] transition-colors hover:bg-[#BFEAEA]/40 hover:text-[#00AEB0] focus:outline-none focus:ring-2 focus:ring-[#00AEB0]/50"
               >
                 {link.label}
               </Link>
@@ -47,37 +47,43 @@ export default function Navigation() {
               href="https://www.instagram.com/tutoringforthedeaf/?utm_source=ig_web_button_share_sheet"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 rounded-md p-2 text-foreground transition-colors hover:bg-primary/10 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+              className="ml-1 rounded-lg p-2 text-[#0B1724] transition-colors hover:bg-[#BFEAEA]/40 hover:text-[#00AEB0] focus:outline-none focus:ring-2 focus:ring-[#00AEB0]/50"
               aria-label="Follow us on Instagram"
             >
-              <Instagram className="h-6 w-6" />
+              <Instagram className="h-5 w-5" />
             </a>
+            <Button
+              asChild
+              size="sm"
+              className="ml-3 rounded-lg bg-[#00AEB0] hover:bg-[#008C8E] text-white font-semibold px-5 py-2 shadow-sm transition-all"
+            >
+              <Link href="/contact">Book a Free Consultation</Link>
+            </Button>
           </div>
 
           {/* Mobile menu button */}
           <div className="flex md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
+            <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
               aria-expanded={isOpen}
+              className="rounded-lg p-2 text-[#0B1724] hover:bg-[#BFEAEA]/40 transition-colors focus:outline-none focus:ring-2 focus:ring-[#00AEB0]/50"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
+            </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden border-t border-border/40">
-          <div className="space-y-1 px-4 pb-3 pt-2">
+        <div className="md:hidden border-t border-[#BDE3E4]/60 bg-white">
+          <div className="space-y-1 px-4 pb-4 pt-2">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block rounded-md px-4 py-3 text-lg font-medium text-foreground transition-colors hover:bg-primary/10 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                className="block rounded-lg px-4 py-3 text-base font-medium text-[#0B1724] transition-colors hover:bg-[#BFEAEA]/40 hover:text-[#00AEB0] focus:outline-none focus:ring-2 focus:ring-[#00AEB0]/50"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
@@ -87,12 +93,22 @@ export default function Navigation() {
               href="https://www.instagram.com/tutoringforthedeaf/?utm_source=ig_web_button_share_sheet"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-md px-4 py-3 text-lg font-medium text-foreground transition-colors hover:bg-primary/10 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+              className="flex items-center gap-2 rounded-lg px-4 py-3 text-base font-medium text-[#0B1724] transition-colors hover:bg-[#BFEAEA]/40 hover:text-[#00AEB0]"
               onClick={() => setIsOpen(false)}
             >
               <Instagram className="h-5 w-5" />
               Instagram
             </a>
+            <div className="pt-2">
+              <Button
+                asChild
+                className="w-full rounded-lg bg-[#00AEB0] hover:bg-[#008C8E] text-white font-semibold"
+              >
+                <Link href="/contact" onClick={() => setIsOpen(false)}>
+                  Book a Free Consultation
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       )}

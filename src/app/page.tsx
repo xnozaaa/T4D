@@ -4,7 +4,7 @@ import Navigation from "@/components/Navigation"
 import Footer from "@/components/Footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { BookOpen, Calculator, Users, Mail } from "lucide-react"
+import { BookOpen, Calculator, Users, ClipboardList, CheckCircle2 } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -17,35 +17,71 @@ export default function Home() {
     <>
       <Navigation />
       <main className="min-h-screen">
+
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-teal/20 to-gold/20 py-20 md:py-32">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative bg-[#F7F8FC] py-20 md:py-32 overflow-hidden">
+          {/* Subtle decorative aqua blob */}
+          <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-[#BFEAEA]/30 blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-[#BFEAEA]/20 blur-3xl pointer-events-none" />
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight">
-                  Helping Deaf Students Succeed with Personalised Tutoring!
+              <div className="space-y-7">
+                {/* Tag line */}
+                <div className="inline-flex items-center gap-2 bg-[#BFEAEA]/60 text-[#00AEB0] font-semibold text-sm px-4 py-1.5 rounded-full border border-[#00AEB0]/20">
+                  <span className="w-2 h-2 rounded-full bg-[#00AEB0] animate-pulse" />
+                  BSL Fluent · 10+ Years Experience
+                </div>
+
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0B1724] leading-tight">
+                  Helping Deaf Students{" "}
+                  <span className="text-[#00AEB0]">Succeed</span>{" "}
+                  with Personalised Tutoring
                 </h1>
-                <p className="text-xl md:text-2xl text-navy/80">
-                  Supporting secondary students in English and Maths, making learning clear, engaging, and effective.
+                <p className="text-xl text-[#0B1724]/70 leading-relaxed">
+                  Supporting secondary students in English and Maths — making learning clear, engaging, and effective.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6">
-                    <Link href="/contact">Get Started</Link>
+                  <Button
+                    asChild
+                    size="lg"
+                    className="rounded-xl bg-[#00AEB0] hover:bg-[#008C8E] text-white font-semibold text-base px-8 py-6 shadow-md shadow-[#00AEB0]/25 transition-all"
+                  >
+                    <Link href="/contact">Book a Free Consultation</Link>
                   </Button>
-                  <Button asChild size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary/10 text-lg px-8 py-6">
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="rounded-xl border-2 border-[#0B1724] text-[#0B1724] hover:bg-[#0B1724] hover:text-white font-semibold text-base px-8 py-6 transition-all"
+                  >
                     <Link href="/services">Our Services</Link>
                   </Button>
                 </div>
+
+                {/* Trust indicators */}
+                <div className="flex flex-wrap gap-5 pt-2">
+                  {["Specialist Deaf Tutor", "BSL Fluent", "Flexible Online & In-Person"].map((item) => (
+                    <div key={item} className="flex items-center gap-2 text-sm text-[#0B1724]/70">
+                      <CheckCircle2 className="w-4 h-4 text-[#00AEB0] flex-shrink-0" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
               </div>
+
               <div className="flex justify-center lg:justify-end">
-                <Image
-                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/hero-1759346019763.png"
-                  alt="Tutoring for the Deaf Logo"
-                  width={500}
-                  height={500}
-                  className="w-full max-w-md lg:max-w-lg"
-                  priority
-                />
+                <div className="relative">
+                  <div className="absolute inset-0 -m-4 rounded-3xl bg-[#BFEAEA]/40 blur-xl" />
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/hero-1759346019763.png"
+                    alt="Tutoring for the Deaf"
+                    width={500}
+                    height={500}
+                    className="relative w-full max-w-md lg:max-w-lg rounded-2xl"
+                    priority
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -54,79 +90,84 @@ export default function Home() {
         {/* Services Overview */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">What We Offer</h2>
-              <p className="text-xl text-navy/70 max-w-2xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0B1724] mb-4">What We Offer</h2>
+              <p className="text-xl text-[#0B1724]/60 max-w-2xl mx-auto">
                 Specialised tutoring services designed for deaf students
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="border-2 hover:border-primary transition-colors">
-                <CardContent className="p-6 text-center space-y-4">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                    <BookOpen className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-navy">English Tutoring</h3>
-                  <p className="text-navy/70">Comprehensive English language support tailored to your needs</p>
-                </CardContent>
-              </Card>
-              <Card className="border-2 hover:border-secondary transition-colors">
-                <CardContent className="p-6 text-center space-y-4">
-                  <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
-                    <Calculator className="w-8 h-8 text-secondary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-navy">Maths Tutoring</h3>
-                  <p className="text-navy/70">Clear and engaging mathematics instruction for all levels</p>
-                </CardContent>
-              </Card>
-              <Card className="border-2 hover:border-primary transition-colors">
-                <CardContent className="p-6 text-center space-y-4">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                    <Users className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-navy">1:1 Support</h3>
-                  <p className="text-navy/70">Personalised one-to-one tutoring sessions focused on your goals</p>
-                </CardContent>
-              </Card>
-              <Card className="border-2 hover:border-secondary transition-colors">
-                <CardContent className="p-6 text-center space-y-4">
-                  <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
-                    <Mail className="w-8 h-8 text-secondary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-navy">Homework Help</h3>
-                  <p className="text-navy/70">Assistance with homework and test preparation</p>
-                </CardContent>
-              </Card>
+              {[
+                {
+                  icon: <BookOpen className="w-8 h-8 text-[#00AEB0]" />,
+                  title: "English Tutoring",
+                  desc: "Comprehensive English language support tailored to your needs",
+                  accent: "bg-[#BFEAEA]/60",
+                },
+                {
+                  icon: <Calculator className="w-8 h-8 text-[#00AEB0]" />,
+                  title: "Maths Tutoring",
+                  desc: "Clear and engaging mathematics instruction for all levels",
+                  accent: "bg-[#BFEAEA]/60",
+                },
+                {
+                  icon: <Users className="w-8 h-8 text-[#00AEB0]" />,
+                  title: "1:1 Support",
+                  desc: "Personalised one-to-one tutoring sessions focused on your goals",
+                  accent: "bg-[#BFEAEA]/60",
+                },
+                {
+                  icon: <ClipboardList className="w-8 h-8 text-[#00AEB0]" />,
+                  title: "Homework Help",
+                  desc: "Assistance with homework and test preparation",
+                  accent: "bg-[#BFEAEA]/60",
+                },
+              ].map((item) => (
+                <Card
+                  key={item.title}
+                  className="border border-[#BDE3E4] rounded-2xl hover:border-[#00AEB0] hover:shadow-md hover:shadow-[#00AEB0]/10 transition-all duration-200 bg-white"
+                >
+                  <CardContent className="p-7 text-center space-y-4">
+                    <div className={`w-16 h-16 ${item.accent} rounded-2xl flex items-center justify-center mx-auto`}>
+                      {item.icon}
+                    </div>
+                    <h3 className="text-lg font-bold text-[#0B1724]">{item.title}</h3>
+                    <p className="text-[#0B1724]/60 text-sm leading-relaxed">{item.desc}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Qualifications Section */}
-        <section className="py-20 bg-cream">
+        <section className="py-20 bg-[#BFEAEA]/25">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">Expert Qualifications</h2>
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-primary rounded-full flex-shrink-0 mt-1"></div>
-                    <p className="text-lg text-navy">Specialist Deaf Tutor with extensive experience</p>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-secondary rounded-full flex-shrink-0 mt-1"></div>
-                    <p className="text-lg text-navy">Degrees in Teaching and Deaf Education</p>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-primary rounded-full flex-shrink-0 mt-1"></div>
-                    <p className="text-lg text-navy">10+ Years Experience Working with Deaf Children</p>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-secondary rounded-full flex-shrink-0 mt-1"></div>
-                    <p className="text-lg text-navy">Fluent in B.S.L (British Sign Language)</p>
-                  </li>
+                <h2 className="text-3xl md:text-4xl font-bold text-[#0B1724] mb-8">Expert Qualifications</h2>
+                <ul className="space-y-5">
+                  {[
+                    "Specialist Deaf Tutor with extensive experience",
+                    "Degrees in Teaching and Deaf Education",
+                    "10+ Years Experience Working with Deaf Children",
+                    "Fluent in B.S.L (British Sign Language)",
+                  ].map((qual, i) => (
+                    <li key={i} className="flex items-start gap-4">
+                      <div className="w-6 h-6 rounded-full bg-[#00AEB0] flex-shrink-0 mt-0.5 flex items-center justify-center">
+                        <CheckCircle2 className="w-4 h-4 text-white" />
+                      </div>
+                      <p className="text-lg text-[#0B1724]">{qual}</p>
+                    </li>
+                  ))}
                 </ul>
-                <div className="mt-8">
-                  <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-navy text-lg px-8 py-6">
+                <div className="mt-10">
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="rounded-xl border-2 border-[#0B1724] text-[#0B1724] hover:bg-[#0B1724] hover:text-white font-semibold text-base px-8 py-6 transition-all"
+                  >
                     <Link href="/about">Learn More About Me</Link>
                   </Button>
                 </div>
@@ -137,7 +178,7 @@ export default function Home() {
                   alt="Tutoring Services"
                   width={500}
                   height={600}
-                  className="w-full max-w-md rounded-lg shadow-xl"
+                  className="w-full max-w-md rounded-2xl shadow-xl shadow-[#0B1724]/10"
                 />
               </div>
             </div>
@@ -145,17 +186,22 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-primary to-secondary">
+        <section className="py-20 bg-[#0B1724]">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Let's Study Together!</h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Let&apos;s Study Together!</h2>
+            <p className="text-xl text-[#BFEAEA]/80 mb-10 max-w-2xl mx-auto">
               Ready to start your learning journey? Get in touch today for personalised tutoring support.
             </p>
-            <Button asChild size="lg" variant="secondary" className="bg-white hover:bg-white/90 text-primary text-lg px-8 py-6">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-xl bg-[#00AEB0] hover:bg-[#008C8E] text-white font-semibold text-lg px-10 py-6 shadow-lg shadow-[#00AEB0]/30 transition-all"
+            >
               <Link href="/contact">Contact Us Now</Link>
             </Button>
           </div>
         </section>
+
       </main>
       <Footer />
     </>
