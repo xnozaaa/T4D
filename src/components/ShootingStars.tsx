@@ -4,90 +4,94 @@ import { useEffect, useState } from "react"
 
 interface Star {
   id: number
-  top: string
-  left: string
-  delay: string
-  duration: string
-  size: number
-  angle: number
+  top: number
+  left: number
+  delay: number
+  duration: number
+  tailLength: number
 }
 
-function randomBetween(min: number, max: number) {
-  return Math.random() * (max - min) + min
-}
-
-export default function ShootingStars({ count = 8 }: { count?: number }) {
+export default function ShootingStars({ count = 12 }: { count?: number }) {
   const [stars, setStars] = useState<Star[]>([])
 
   useEffect(() => {
-    const generated: Star[] = Array.from({ length: count }, (_, i) => ({
-      id: i,
-      top: `${randomBetween(0, 70)}%`,
-      left: `${randomBetween(-10, 60)}%`,
-      delay: `${randomBetween(0, 8)}s`,
-      duration: `${randomBetween(1.4, 2.6)}s`,
-      size: randomBetween(1.5, 2.5),
-      angle: randomBetween(20, 45),
-    }))
-    setStars(generated)
+    setStars(
+      Array.from({ length: count }, (_, i) => ({
+        id: i,
+        top: Math.random() * 80,
+        left: Math.random() * 70,
+        delay: Math.random() * 12,
+        duration: 1.2 + Math.random() * 1.4,
+        tailLength: 120 + Math.random() * 180,
+      }))
+    )
   }, [count])
 
   return (
-    <>
+    <span className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
       <style>{`
-        @keyframes shoot {
+        @keyframes shootingStar {
           0% {
-            transform: translateX(0) translateY(0) scaleX(1);
+            transform: translateX(0px) translateY(0px);
             opacity: 0;
           }
-          5% {
+          3% {
             opacity: 1;
           }
           70% {
             opacity: 1;
           }
           100% {
-            transform: translateX(340px) translateY(200px) scaleX(1);
+            transform: translateX(500px) translateY(300px);
             opacity: 0;
           }
-        }
-        .shooting-star {
-          position: absolute;
-          border-radius: 9999px;
-          animation: shoot linear infinite;
-          pointer-events: none;
-        }
-        .shooting-star::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          right: 0;
-          transform: translateY(-50%);
-          width: 80px;
-          height: 1px;
-          background: linear-gradient(to left, transparent, #0fa3a3);
-          border-radius: 9999px;
         }
       `}</style>
 
       {stars.map((star) => (
         <span
           key={star.id}
-          className="shooting-star"
           style={{
-            top: star.top,
-            left: star.left,
-            width: `${star.size * 3}px`,
-            height: `${star.size}px`,
-            background: `radial-gradient(circle, #0fa3a3, #b7e4e6)`,
-            boxShadow: `0 0 6px 1px #0fa3a380`,
-            animationDelay: star.delay,
-            animationDuration: star.duration,
-            rotate: `${star.angle}deg`,
+            position: "absolute",
+            top: `${star.top}%`,
+            left: `${star.left}%`,
+            animationName: "shootingStar",
+            animationTimingFunction: "linear",
+            animationIterationCount: "infinite",
+            animationDuration: `${star.duration}s`,
+            animationDelay: `${star.delay}s`,
             opacity: 0,
+            display: "inline-block",
+            transform: "rotate(35deg)",
           }}
-        />
+        >
+          {/* Tail */}
+          <span
+            style={{
+              display: "block",
+              width: `${star.tailLength}px`,
+              height: "2px",
+              background: `linear-gradient(to right, transparent, #b7e4e6aa, #0fa3a3)`,
+              borderRadius: "9999px",
+              position: "relative",
+            }}
+          />
+          {/* Head glow */}
+          <span
+            style={{
+              position: "absolute",
+              right: "-3px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: "6px",
+              height: "6px",
+              borderRadius: "50%",
+              background: "#ffffff",
+              boxShadow: "0 0 6px 3px #0fa3a3, 0 0 12px 6px #0fa3a340",
+            }}
+          />
+        </span>
       ))}
-    </>
+    </span>
   )
 }
