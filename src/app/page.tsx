@@ -70,15 +70,15 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="flex justify-center lg:justify-end">
-                <div className="relative flex items-center justify-center">
-                  <div className="absolute inset-0 -m-8 rounded-full bg-[#BFEAEA]/40 blur-3xl" />
+              <div className="flex items-center justify-center w-full min-h-[400px]">
+                <div className="relative w-full flex items-center justify-center">
+                  <div className="absolute inset-0 rounded-full bg-[#BFEAEA]/40 blur-3xl" />
                   <Image
                     src="/tfd-stacked-light.png"
                     alt="Tutoring for the Deaf"
-                    width={600}
-                    height={600}
-                    className="relative w-full drop-shadow-xl"
+                    width={800}
+                    height={800}
+                    className="relative w-full h-auto drop-shadow-xl"
                     priority
                   />
                 </div>
