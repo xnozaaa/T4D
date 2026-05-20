@@ -78,7 +78,7 @@ export default function Home() {
                     alt="Tutoring for the Deaf"
                     width={600}
                     height={600}
-                    className="relative w-full max-w-sm sm:max-w-md lg:max-w-xl drop-shadow-xl"
+                    className="relative w-full drop-shadow-xl"
                     priority
                   />
                 </div>
