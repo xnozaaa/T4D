@@ -19,14 +19,14 @@ export default function AboutPage() {
       <main className="min-h-screen">
 
         {/* Hero Section */}
-        <section className="bg-[#BFEAEA]/25 py-20">
+        <section className="bg-[#b7e4e6]/25 py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="inline-flex items-center gap-2 bg-white text-[#00AEB0] font-semibold text-sm px-4 py-1.5 rounded-full border border-[#BDE3E4] mb-6 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#00AEB0]" />
+            <div className="inline-flex items-center gap-2 bg-white text-[#0fa3a3] font-semibold text-sm px-4 py-1.5 rounded-full border border-[#b7e4e6] mb-6 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#0fa3a3]" />
               Specialist Deaf Tutor
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-[#0B1724] mb-6">About Me</h1>
-            <p className="text-xl text-[#0B1724]/70 max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#0d1b2a] mb-6">About Me</h1>
+            <p className="text-xl text-[#0d1b2a]/70 max-w-3xl mx-auto">
               A dedicated specialist tutor with over 10 years of experience supporting deaf students
             </p>
           </div>
@@ -37,9 +37,9 @@ export default function AboutPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center mb-16">
               <div className="order-2 lg:order-1">
-                <div className="h-1 w-12 bg-[#00AEB0] rounded-full mb-6" />
-                <h2 className="text-3xl md:text-4xl font-bold text-[#0B1724] mb-6">My Journey</h2>
-                <div className="space-y-5 text-lg text-[#0B1724]/70 leading-relaxed">
+                <div className="h-1 w-12 bg-[#0fa3a3] rounded-full mb-6" />
+                <h2 className="text-3xl md:text-4xl font-bold text-[#0d1b2a] mb-6">My Journey</h2>
+                <div className="space-y-5 text-lg text-[#0d1b2a]/70 leading-relaxed">
                   <p>
                     Welcome to Tutoring for the Deaf! I&apos;m a specialist tutor dedicated to helping deaf
                     secondary students succeed in their English and Maths studies.
@@ -58,7 +58,7 @@ export default function AboutPage() {
               </div>
               <div className="order-1 lg:order-2 flex justify-center">
                 <div className="relative">
-                  <div className="absolute inset-0 -m-4 rounded-3xl bg-[#BFEAEA]/40 blur-xl" />
+                  <div className="absolute inset-0 -m-4 rounded-3xl bg-[#b7e4e6]/40 blur-xl" />
                   <Image
                     src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/hero-1759346019763.png"
                     alt="Tutoring Logo"
@@ -73,21 +73,21 @@ export default function AboutPage() {
         </section>
 
         {/* Qualifications */}
-        <section className="py-20 bg-[#BFEAEA]/20">
+        <section className="py-20 bg-[#b7e4e6]/20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0B1724] mb-3">Qualifications &amp; Experience</h2>
-              <p className="text-[#0B1724]/60 text-lg max-w-xl mx-auto">A strong foundation built on specialist knowledge and real-world experience</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0d1b2a] mb-3">Qualifications &amp; Experience</h2>
+              <p className="text-[#0d1b2a]/60 text-lg max-w-xl mx-auto">A strong foundation built on specialist knowledge and real-world experience</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  icon: <GraduationCap className="w-8 h-8 text-[#00AEB0]" />,
+                  icon: <GraduationCap className="w-8 h-8 text-[#0fa3a3]" />,
                   title: "Education Degrees",
                   desc: "Degrees in Teaching and Deaf Education",
                 },
                 {
-                  icon: <Award className="w-8 h-8 text-[#00AEB0]" />,
+                  icon: <Award className="w-8 h-8 text-[#0fa3a3]" />,
                   title: "10+ Years Experience",
                   desc: "Over a decade working with deaf children",
                 },
@@ -97,21 +97,21 @@ export default function AboutPage() {
                   desc: "Fluent in British Sign Language",
                 },
                 {
-                  icon: <Target className="w-8 h-8 text-[#00AEB0]" />,
+                  icon: <Target className="w-8 h-8 text-[#0fa3a3]" />,
                   title: "Specialist Tutor",
                   desc: "Specialised in deaf education",
                 },
               ].map((item) => (
                 <Card
                   key={item.title}
-                  className="border border-[#BDE3E4] rounded-2xl hover:border-[#00AEB0] hover:shadow-md hover:shadow-[#00AEB0]/10 transition-all bg-white"
+                  className="border border-[#b7e4e6] rounded-2xl hover:border-[#0fa3a3] hover:shadow-md hover:shadow-[#0fa3a3]/10 transition-all bg-white"
                 >
                   <CardContent className="p-7 text-center space-y-4">
-                    <div className="w-16 h-16 bg-[#BFEAEA]/60 rounded-2xl flex items-center justify-center mx-auto">
+                    <div className="w-16 h-16 bg-[#b7e4e6]/60 rounded-2xl flex items-center justify-center mx-auto">
                       {item.icon}
                     </div>
-                    <h3 className="text-lg font-bold text-[#0B1724]">{item.title}</h3>
-                    <p className="text-[#0B1724]/60 text-sm leading-relaxed">{item.desc}</p>
+                    <h3 className="text-lg font-bold text-[#0d1b2a]">{item.title}</h3>
+                    <p className="text-[#0d1b2a]/60 text-sm leading-relaxed">{item.desc}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -123,7 +123,7 @@ export default function AboutPage() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0B1724] mb-3">My Teaching Approach</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0d1b2a] mb-3">My Teaching Approach</h2>
             </div>
             <div className="max-w-4xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -145,11 +145,11 @@ export default function AboutPage() {
                   },
                 ].map((item) => (
                   <div key={item.title} className="text-center">
-                    <div className="w-20 h-20 bg-[#00AEB0] rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg shadow-[#00AEB0]/20">
+                    <div className="w-20 h-20 bg-[#0fa3a3] rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg shadow-[#0fa3a3]/20">
                       {item.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-[#0B1724] mb-3">{item.title}</h3>
-                    <p className="text-[#0B1724]/60 leading-relaxed">{item.desc}</p>
+                    <h3 className="text-xl font-bold text-[#0d1b2a] mb-3">{item.title}</h3>
+                    <p className="text-[#0d1b2a]/60 leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -158,19 +158,19 @@ export default function AboutPage() {
         </section>
 
         {/* Mission Statement */}
-        <section className="py-20 bg-[#0B1724]">
+        <section className="py-20 bg-[#0d1b2a]">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="max-w-3xl mx-auto">
-              <div className="w-12 h-1 bg-[#00AEB0] rounded-full mx-auto mb-8" />
+              <div className="w-12 h-1 bg-[#0fa3a3] rounded-full mx-auto mb-8" />
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">My Mission</h2>
-              <p className="text-xl text-[#BFEAEA]/80 mb-10 leading-relaxed italic">
+              <p className="text-xl text-[#b7e4e6]/80 mb-10 leading-relaxed italic">
                 &ldquo;To empower deaf students to reach their full academic potential by providing accessible,
                 engaging, and personalised tutoring that celebrates their strengths and supports their learning journey.&rdquo;
               </p>
               <Button
                 asChild
                 size="lg"
-                className="rounded-xl bg-[#00AEB0] hover:bg-[#008C8E] text-white font-semibold text-base px-8 py-6 shadow-lg shadow-[#00AEB0]/30 transition-all"
+                className="rounded-xl bg-[#0fa3a3] hover:bg-[#0d8f8f] text-white font-semibold text-base px-8 py-6 shadow-lg shadow-[#0fa3a3]/30 transition-all"
               >
                 <Link href="/contact">Work With Me</Link>
               </Button>

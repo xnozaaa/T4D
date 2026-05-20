@@ -65,76 +65,76 @@
   --radius: 0.75rem;
 
   /* TFD Brand Colours */
-  --navy:       #0B1724;
-  --teal:       #00AEB0;
-  --teal-dark:  #008C8E;
-  --pale-aqua:  #BFEAEA;
-  --off-white:  #F7F8FC;
+  --navy:       #0d1b2a;
+  --teal:       #0fa3a3;
+  --teal-dark:  #0d8f8f;
+  --pale-aqua:  #b7e4e6;
+  --off-white:  #f8f8ff;
 
   /* Semantic Tokens */
-  --background:          #F7F8FC;
-  --foreground:          #0B1724;
-  --primary:             #00AEB0;
+  --background:          #f8f8ff;
+  --foreground:          #0d1b2a;
+  --primary:             #0fa3a3;
   --primary-foreground:  #ffffff;
-  --secondary:           #BFEAEA;
-  --secondary-foreground: #0B1724;
-  --muted:               #EAF6F6;
-  --muted-foreground:    #4A6275;
-  --accent:              #00AEB0;
+  --secondary:           #b7e4e6;
+  --secondary-foreground: #0d1b2a;
+  --muted:               #e4f4f5;
+  --muted-foreground:    #6b7280;
+  --accent:              #0fa3a3;
   --accent-foreground:   #ffffff;
   --card:                #ffffff;
-  --card-foreground:     #0B1724;
+  --card-foreground:     #0d1b2a;
   --popover:             #ffffff;
-  --popover-foreground:  #0B1724;
-  --border:              #BDE3E4;
-  --input:               #D5EEEF;
-  --ring:                #00AEB0;
+  --popover-foreground:  #0d1b2a;
+  --border:              #b7e4e6;
+  --input:               #cdeced;
+  --ring:                #0fa3a3;
   --destructive:         oklch(0.577 0.245 27.325);
 
-  --chart-1: #00AEB0;
-  --chart-2: #BFEAEA;
-  --chart-3: #0B1724;
-  --chart-4: #008C8E;
-  --chart-5: #4A6275;
+  --chart-1: #0fa3a3;
+  --chart-2: #b7e4e6;
+  --chart-3: #0d1b2a;
+  --chart-4: #0d8f8f;
+  --chart-5: #6b7280;
 
-  --sidebar:                     #F7F8FC;
-  --sidebar-foreground:          #0B1724;
-  --sidebar-primary:             #0B1724;
-  --sidebar-primary-foreground:  #F7F8FC;
-  --sidebar-accent:              #EAF6F6;
-  --sidebar-accent-foreground:   #0B1724;
-  --sidebar-border:              #BDE3E4;
-  --sidebar-ring:                #00AEB0;
+  --sidebar:                     #f8f8ff;
+  --sidebar-foreground:          #0d1b2a;
+  --sidebar-primary:             #0d1b2a;
+  --sidebar-primary-foreground:  #f8f8ff;
+  --sidebar-accent:              #e4f4f5;
+  --sidebar-accent-foreground:   #0d1b2a;
+  --sidebar-border:              #b7e4e6;
+  --sidebar-ring:                #0fa3a3;
 }
 
 .dark {
-  --background: #0B1724;
-  --foreground: #F7F8FC;
-  --card: #162232;
-  --card-foreground: #F7F8FC;
-  --popover: #162232;
-  --popover-foreground: #F7F8FC;
-  --primary: #00AEB0;
+  --background: #0d1b2a;
+  --foreground: #f8f8ff;
+  --card: #162535;
+  --card-foreground: #f8f8ff;
+  --popover: #162535;
+  --popover-foreground: #f8f8ff;
+  --primary: #0fa3a3;
   --primary-foreground: #ffffff;
-  --secondary: #1F3040;
-  --secondary-foreground: #F7F8FC;
-  --muted: #1F3040;
-  --muted-foreground: #8AAABB;
-  --accent: #00AEB0;
+  --secondary: #1e3248;
+  --secondary-foreground: #f8f8ff;
+  --muted: #1e3248;
+  --muted-foreground: #8aabb0;
+  --accent: #0fa3a3;
   --accent-foreground: #ffffff;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: rgba(0, 174, 176, 0.2);
-  --input: rgba(0, 174, 176, 0.15);
-  --ring: #00AEB0;
+  --border: rgba(15, 163, 163, 0.2);
+  --input: rgba(15, 163, 163, 0.15);
+  --ring: #0fa3a3;
 
-  --sidebar: #162232;
-  --sidebar-foreground: #F7F8FC;
-  --sidebar-primary: #00AEB0;
+  --sidebar: #162535;
+  --sidebar-foreground: #f8f8ff;
+  --sidebar-primary: #0fa3a3;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #1F3040;
-  --sidebar-accent-foreground: #F7F8FC;
-  --sidebar-border: rgba(0, 174, 176, 0.2);
-  --sidebar-ring: #00AEB0;
+  --sidebar-accent: #1e3248;
+  --sidebar-accent-foreground: #f8f8ff;
+  --sidebar-border: rgba(15, 163, 163, 0.2);
+  --sidebar-ring: #0fa3a3;
 }
 
 @layer base {
@@ -148,12 +148,12 @@
 }
 
 /* Utility classes for brand colours */
-.bg-navy    { background-color: var(--navy); }
-.bg-teal    { background-color: var(--teal); }
-.bg-pale-aqua { background-color: var(--pale-aqua); }
-.bg-off-white { background-color: var(--off-white); }
-.text-teal  { color: var(--teal); }
-.text-navy  { color: var(--navy); }
+.bg-navy      { background-color: #0d1b2a; }
+.bg-teal      { background-color: #0fa3a3; }
+.bg-pale-aqua { background-color: #b7e4e6; }
+.bg-off-white { background-color: #f8f8ff; }
+.text-teal    { color: #0fa3a3; }
+.text-navy    { color: #0d1b2a; }
 
 /* Hide Next.js error overlay portal */
 nextjs-portal {

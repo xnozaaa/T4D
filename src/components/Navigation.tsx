@@ -25,7 +25,7 @@ export default function Navigation() {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-[#BDE3E4]/60 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm">
+    <nav className="sticky top-0 z-50 w-full border-b border-[#b7e4e6]/60 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
@@ -46,7 +46,7 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-lg px-4 py-2 text-base font-medium text-[#0B1724] transition-colors hover:bg-[#BFEAEA]/40 hover:text-[#00AEB0] focus:outline-none focus:ring-2 focus:ring-[#00AEB0]/50"
+                className="rounded-lg px-4 py-2 text-base font-medium text-[#0d1b2a] transition-colors hover:bg-[#b7e4e6]/40 hover:text-[#0fa3a3] focus:outline-none focus:ring-2 focus:ring-[#0fa3a3]/50"
               >
                 {link.label}
               </Link>
@@ -55,7 +55,7 @@ export default function Navigation() {
               href="https://www.instagram.com/tutoringforthedeaf/?utm_source=ig_web_button_share_sheet"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-1 rounded-lg p-2 text-[#0B1724] transition-colors hover:bg-[#BFEAEA]/40 hover:text-[#00AEB0] focus:outline-none focus:ring-2 focus:ring-[#00AEB0]/50"
+              className="ml-1 rounded-lg p-2 text-[#0d1b2a] transition-colors hover:bg-[#b7e4e6]/40 hover:text-[#0fa3a3] focus:outline-none focus:ring-2 focus:ring-[#0fa3a3]/50"
               aria-label="Follow us on Instagram"
             >
               <Instagram className="h-5 w-5" />
@@ -64,7 +64,7 @@ export default function Navigation() {
               href="https://www.tiktok.com/@tutoringforthedeaf"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg p-2 text-[#0B1724] transition-colors hover:bg-[#BFEAEA]/40 hover:text-[#00AEB0] focus:outline-none focus:ring-2 focus:ring-[#00AEB0]/50"
+              className="rounded-lg p-2 text-[#0d1b2a] transition-colors hover:bg-[#b7e4e6]/40 hover:text-[#0fa3a3] focus:outline-none focus:ring-2 focus:ring-[#0fa3a3]/50"
               aria-label="Follow us on TikTok"
             >
               <TikTokIcon className="h-5 w-5" />
@@ -72,7 +72,7 @@ export default function Navigation() {
             <Button
               asChild
               size="sm"
-              className="ml-3 rounded-lg bg-[#00AEB0] hover:bg-[#008C8E] text-white font-semibold px-5 py-2 shadow-sm transition-all"
+              className="ml-3 rounded-lg bg-[#0fa3a3] hover:bg-[#0d8f8f] text-white font-semibold px-5 py-2 shadow-sm transition-all"
             >
               <Link href="/contact">Book a Free Consultation</Link>
             </Button>
@@ -84,7 +84,7 @@ export default function Navigation() {
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
               aria-expanded={isOpen}
-              className="rounded-lg p-2 text-[#0B1724] hover:bg-[#BFEAEA]/40 transition-colors focus:outline-none focus:ring-2 focus:ring-[#00AEB0]/50"
+              className="rounded-lg p-2 text-[#0d1b2a] hover:bg-[#b7e4e6]/40 transition-colors focus:outline-none focus:ring-2 focus:ring-[#0fa3a3]/50"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -94,13 +94,13 @@ export default function Navigation() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden border-t border-[#BDE3E4]/60 bg-white">
+        <div className="md:hidden border-t border-[#b7e4e6]/60 bg-white">
           <div className="space-y-1 px-4 pb-4 pt-2">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block rounded-lg px-4 py-3 text-base font-medium text-[#0B1724] transition-colors hover:bg-[#BFEAEA]/40 hover:text-[#00AEB0] focus:outline-none focus:ring-2 focus:ring-[#00AEB0]/50"
+                className="block rounded-lg px-4 py-3 text-base font-medium text-[#0d1b2a] transition-colors hover:bg-[#b7e4e6]/40 hover:text-[#0fa3a3] focus:outline-none focus:ring-2 focus:ring-[#0fa3a3]/50"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
@@ -110,7 +110,7 @@ export default function Navigation() {
               href="https://www.instagram.com/tutoringforthedeaf/?utm_source=ig_web_button_share_sheet"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg px-4 py-3 text-base font-medium text-[#0B1724] transition-colors hover:bg-[#BFEAEA]/40 hover:text-[#00AEB0]"
+              className="flex items-center gap-2 rounded-lg px-4 py-3 text-base font-medium text-[#0d1b2a] transition-colors hover:bg-[#b7e4e6]/40 hover:text-[#0fa3a3]"
               onClick={() => setIsOpen(false)}
             >
               <Instagram className="h-5 w-5" />
@@ -120,7 +120,7 @@ export default function Navigation() {
               href="https://www.tiktok.com/@tutoringforthedeaf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg px-4 py-3 text-base font-medium text-[#0B1724] transition-colors hover:bg-[#BFEAEA]/40 hover:text-[#00AEB0]"
+              className="flex items-center gap-2 rounded-lg px-4 py-3 text-base font-medium text-[#0d1b2a] transition-colors hover:bg-[#b7e4e6]/40 hover:text-[#0fa3a3]"
               onClick={() => setIsOpen(false)}
             >
               <TikTokIcon className="h-5 w-5" />
@@ -129,7 +129,7 @@ export default function Navigation() {
             <div className="pt-2">
               <Button
                 asChild
-                className="w-full rounded-lg bg-[#00AEB0] hover:bg-[#008C8E] text-white font-semibold"
+                className="w-full rounded-lg bg-[#0fa3a3] hover:bg-[#0d8f8f] text-white font-semibold"
               >
                 <Link href="/contact" onClick={() => setIsOpen(false)}>
                   Book a Free Consultation

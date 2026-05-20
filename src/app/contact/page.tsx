@@ -61,14 +61,14 @@ export default function ContactPage() {
       <main className="min-h-screen">
 
         {/* Hero Section */}
-        <section className="bg-[#BFEAEA]/25 py-20">
+        <section className="bg-[#b7e4e6]/25 py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="inline-flex items-center gap-2 bg-white text-[#00AEB0] font-semibold text-sm px-4 py-1.5 rounded-full border border-[#BDE3E4] mb-6 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#00AEB0]" />
+            <div className="inline-flex items-center gap-2 bg-white text-[#0fa3a3] font-semibold text-sm px-4 py-1.5 rounded-full border border-[#b7e4e6] mb-6 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#0fa3a3]" />
               We'd Love to Hear From You
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-[#0B1724] mb-6">Get In Touch</h1>
-            <p className="text-xl text-[#0B1724]/70 max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#0d1b2a] mb-6">Get In Touch</h1>
+            <p className="text-xl text-[#0d1b2a]/70 max-w-3xl mx-auto">
               Ready to start your learning journey? Contact me today to discuss your tutoring needs.
             </p>
           </div>
@@ -81,10 +81,10 @@ export default function ContactPage() {
 
               {/* Contact Form */}
               <div className="lg:col-span-2">
-                <Card className="border border-[#BDE3E4] rounded-2xl shadow-sm">
+                <Card className="border border-[#b7e4e6] rounded-2xl shadow-sm">
                   <CardHeader className="px-8 pt-8 pb-2">
-                    <CardTitle className="text-2xl text-[#0B1724]">Send Me a Message</CardTitle>
-                    <CardDescription className="text-base text-[#0B1724]/60">
+                    <CardTitle className="text-2xl text-[#0d1b2a]">Send Me a Message</CardTitle>
+                    <CardDescription className="text-base text-[#0d1b2a]/60">
                       Fill out the form below and I&apos;ll get back to you as soon as possible.
                     </CardDescription>
                   </CardHeader>
@@ -92,7 +92,7 @@ export default function ContactPage() {
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <Label htmlFor="name" className="text-sm font-semibold text-[#0B1724]">Name *</Label>
+                          <Label htmlFor="name" className="text-sm font-semibold text-[#0d1b2a]">Name *</Label>
                           <Input
                             id="name"
                             name="name"
@@ -101,11 +101,11 @@ export default function ContactPage() {
                             value={formData.name}
                             onChange={handleChange}
                             disabled={isSubmitting}
-                            className="h-12 text-base rounded-xl border-[#BDE3E4] focus:border-[#00AEB0] focus:ring-[#00AEB0]/20"
+                            className="h-12 text-base rounded-xl border-[#b7e4e6] focus:border-[#0fa3a3] focus:ring-[#0fa3a3]/20"
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="email" className="text-sm font-semibold text-[#0B1724]">Email *</Label>
+                          <Label htmlFor="email" className="text-sm font-semibold text-[#0d1b2a]">Email *</Label>
                           <Input
                             id="email"
                             name="email"
@@ -115,12 +115,12 @@ export default function ContactPage() {
                             value={formData.email}
                             onChange={handleChange}
                             disabled={isSubmitting}
-                            className="h-12 text-base rounded-xl border-[#BDE3E4] focus:border-[#00AEB0] focus:ring-[#00AEB0]/20"
+                            className="h-12 text-base rounded-xl border-[#b7e4e6] focus:border-[#0fa3a3] focus:ring-[#0fa3a3]/20"
                           />
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="phone" className="text-sm font-semibold text-[#0B1724]">Phone (Optional)</Label>
+                        <Label htmlFor="phone" className="text-sm font-semibold text-[#0d1b2a]">Phone (Optional)</Label>
                         <Input
                           id="phone"
                           name="phone"
@@ -129,11 +129,11 @@ export default function ContactPage() {
                           value={formData.phone}
                           onChange={handleChange}
                           disabled={isSubmitting}
-                          className="h-12 text-base rounded-xl border-[#BDE3E4] focus:border-[#00AEB0] focus:ring-[#00AEB0]/20"
+                          className="h-12 text-base rounded-xl border-[#b7e4e6] focus:border-[#0fa3a3] focus:ring-[#0fa3a3]/20"
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="message" className="text-sm font-semibold text-[#0B1724]">Message *</Label>
+                        <Label htmlFor="message" className="text-sm font-semibold text-[#0d1b2a]">Message *</Label>
                         <Textarea
                           id="message"
                           name="message"
@@ -143,14 +143,14 @@ export default function ContactPage() {
                           onChange={handleChange}
                           disabled={isSubmitting}
                           rows={6}
-                          className="text-base resize-none rounded-xl border-[#BDE3E4] focus:border-[#00AEB0] focus:ring-[#00AEB0]/20"
+                          className="text-base resize-none rounded-xl border-[#b7e4e6] focus:border-[#0fa3a3] focus:ring-[#0fa3a3]/20"
                         />
                       </div>
                       <Button
                         type="submit"
                         size="lg"
                         disabled={isSubmitting}
-                        className="w-full rounded-xl bg-[#00AEB0] hover:bg-[#008C8E] text-white font-semibold text-base h-12 disabled:opacity-50 shadow-md shadow-[#00AEB0]/20 transition-all"
+                        className="w-full rounded-xl bg-[#0fa3a3] hover:bg-[#0d8f8f] text-white font-semibold text-base h-12 disabled:opacity-50 shadow-md shadow-[#0fa3a3]/20 transition-all"
                       >
                         <Send className="w-5 h-5 mr-2" />
                         {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -162,36 +162,36 @@ export default function ContactPage() {
 
               {/* Contact Info */}
               <div className="space-y-6">
-                <Card className="border border-[#BDE3E4] rounded-2xl shadow-sm overflow-hidden">
-                  <CardHeader className="bg-[#BFEAEA]/30 px-7 pt-7 pb-4">
-                    <CardTitle className="text-xl text-[#0B1724]">Contact Information</CardTitle>
+                <Card className="border border-[#b7e4e6] rounded-2xl shadow-sm overflow-hidden">
+                  <CardHeader className="bg-[#b7e4e6]/30 px-7 pt-7 pb-4">
+                    <CardTitle className="text-xl text-[#0d1b2a]">Contact Information</CardTitle>
                   </CardHeader>
                   <CardContent className="pt-6 pb-7 px-7 space-y-6">
                     <div className="flex items-start gap-4">
-                      <div className="w-11 h-11 bg-[#BFEAEA]/60 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Mail className="w-5 h-5 text-[#00AEB0]" />
+                      <div className="w-11 h-11 bg-[#b7e4e6]/60 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Mail className="w-5 h-5 text-[#0fa3a3]" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-[#0B1724] mb-1 text-sm">Email</h3>
+                        <h3 className="font-bold text-[#0d1b2a] mb-1 text-sm">Email</h3>
                         <a
                           href="mailto:tutoringforthedeaf@gmail.com"
-                          className="text-[#0B1724]/65 hover:text-[#00AEB0] transition-colors break-all text-sm"
+                          className="text-[#0d1b2a]/65 hover:text-[#0fa3a3] transition-colors break-all text-sm"
                         >
                           tutoringforthedeaf@gmail.com
                         </a>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="w-11 h-11 bg-[#BFEAEA]/60 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Globe className="w-5 h-5 text-[#00AEB0]" />
+                      <div className="w-11 h-11 bg-[#b7e4e6]/60 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Globe className="w-5 h-5 text-[#0fa3a3]" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-[#0B1724] mb-1 text-sm">Website</h3>
+                        <h3 className="font-bold text-[#0d1b2a] mb-1 text-sm">Website</h3>
                         <a
                           href="http://www.tutoringforthedeaf.co.uk"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[#0B1724]/65 hover:text-[#00AEB0] transition-colors break-all text-sm"
+                          className="text-[#0d1b2a]/65 hover:text-[#0fa3a3] transition-colors break-all text-sm"
                         >
                           www.tutoringforthedeaf.co.uk
                         </a>
@@ -200,12 +200,12 @@ export default function ContactPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="border border-[#BDE3E4] rounded-2xl shadow-sm bg-[#0B1724] text-white">
+                <Card className="border border-[#b7e4e6] rounded-2xl shadow-sm bg-[#0d1b2a] text-white">
                   <CardHeader className="px-7 pt-7 pb-3">
                     <CardTitle className="text-xl text-white">Let&apos;s Study Together!</CardTitle>
                   </CardHeader>
                   <CardContent className="pb-7 px-7">
-                    <p className="text-[#BFEAEA]/75 mb-5 text-sm leading-relaxed">
+                    <p className="text-[#b7e4e6]/75 mb-5 text-sm leading-relaxed">
                       I&apos;m here to help you succeed in your English and Maths studies. Get in touch today
                       to discuss how we can work together!
                     </p>
@@ -217,8 +217,8 @@ export default function ContactPage() {
                         "Experienced specialist tutor",
                       ].map((item) => (
                         <div key={item} className="flex items-center gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-[#00AEB0] flex-shrink-0" />
-                          <span className="text-sm text-[#BFEAEA]/80">{item}</span>
+                          <CheckCircle2 className="w-4 h-4 text-[#0fa3a3] flex-shrink-0" />
+                          <span className="text-sm text-[#b7e4e6]/80">{item}</span>
                         </div>
                       ))}
                     </div>
@@ -230,10 +230,10 @@ export default function ContactPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-[#BFEAEA]/20">
+        <section className="py-20 bg-[#b7e4e6]/20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0B1724] mb-3">Frequently Asked Questions</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0d1b2a] mb-3">Frequently Asked Questions</h2>
             </div>
             <div className="max-w-3xl mx-auto space-y-4">
               {[
@@ -254,12 +254,12 @@ export default function ContactPage() {
                   a: "Simply fill out the contact form above or email me directly. We'll arrange an initial consultation to discuss your needs and goals.",
                 },
               ].map((faq) => (
-                <Card key={faq.q} className="border border-[#BDE3E4] rounded-2xl shadow-sm bg-white">
+                <Card key={faq.q} className="border border-[#b7e4e6] rounded-2xl shadow-sm bg-white">
                   <CardHeader className="px-7 pt-6 pb-2">
-                    <CardTitle className="text-lg text-[#0B1724]">{faq.q}</CardTitle>
+                    <CardTitle className="text-lg text-[#0d1b2a]">{faq.q}</CardTitle>
                   </CardHeader>
                   <CardContent className="px-7 pb-6">
-                    <p className="text-[#0B1724]/65 leading-relaxed">{faq.a}</p>
+                    <p className="text-[#0d1b2a]/65 leading-relaxed">{faq.a}</p>
                   </CardContent>
                 </Card>
               ))}
