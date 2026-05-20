@@ -71,14 +71,14 @@ export default function Home() {
               </div>
 
               <div className="flex justify-center lg:justify-end">
-                <div className="relative">
-                  <div className="absolute inset-0 -m-4 rounded-3xl bg-[#BFEAEA]/40 blur-xl" />
+                <div className="relative flex items-center justify-center">
+                  <div className="absolute inset-0 -m-8 rounded-full bg-[#BFEAEA]/40 blur-3xl" />
                   <Image
-                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/hero-1759346019763.png"
+                    src="/tfd-stacked-light.png"
                     alt="Tutoring for the Deaf"
-                    width={500}
-                    height={500}
-                    className="relative w-full max-w-md lg:max-w-lg rounded-2xl"
+                    width={600}
+                    height={600}
+                    className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md drop-shadow-xl"
                     priority
                   />
                 </div>
