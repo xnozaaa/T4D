@@ -74,7 +74,7 @@ export default function Home() {
                 <div className="relative w-full flex items-center justify-center">
                   <div className="absolute inset-0 rounded-full bg-[#BFEAEA]/40 blur-3xl" />
                   <Image
-                    src="/tfd-stacked-light.png"
+                    src="/tfd-hero.png"
                     alt="Tutoring for the Deaf"
                     width={800}
                     height={800}
