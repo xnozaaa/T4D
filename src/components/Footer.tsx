@@ -10,10 +10,10 @@ export default function Footer() {
           {/* Brand Section */}
           <div>
             <Image
-              src="/logo-dark.svg"
+              src="/tfd-logo-dark.png"
               alt="Tutoring for the Deaf"
-              width={200}
-              height={48}
+              width={440}
+              height={100}
               className="h-11 w-auto mb-4"
             />
             <p className="text-[#BFEAEA]/80 text-base leading-relaxed">

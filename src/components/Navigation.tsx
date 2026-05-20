@@ -23,10 +23,10 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0">
             <Image
-              src="/logo-light.svg"
+              src="/tfd-logo-light.png"
               alt="Tutoring for the Deaf"
-              width={220}
-              height={52}
+              width={440}
+              height={100}
               className="h-12 w-auto"
               priority
             />

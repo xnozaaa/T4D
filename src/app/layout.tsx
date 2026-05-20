@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   title: "Tutoring for the Deaf - Personalised English & Maths Support",
   description: "Supporting secondary deaf students with expert tutoring in English and Maths. 10+ years experience, B.S.L fluent, and specialist qualifications in Deaf Education.",
   icons: {
-    icon: "/logo-icon.svg",
-    apple: "/logo-icon.svg",
+    icon: "/tfd-icon.png",
+    apple: "/tfd-icon.png",
   },
 };
 
