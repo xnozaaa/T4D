@@ -21,6 +21,8 @@ export default function Navigation() {
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
     { href: "/about", label: "About" },
+    { href: "/how-it-works", label: "How It Works" },
+    { href: "/safeguarding", label: "Safeguarding" },
     { href: "/contact", label: "Contact" },
   ]
 
