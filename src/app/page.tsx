@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import Navigation from "@/components/Navigation"
 import Footer from "@/components/Footer"
+import QualificationsSection from "@/components/QualificationsSection"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { BookOpen, Calculator, Users, ClipboardList, CheckCircle2 } from "lucide-react"
@@ -141,49 +142,7 @@ export default function Home() {
         </section>
 
         {/* Qualifications Section */}
-        <section className="py-20 bg-[#b7e4e6]/25">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-[#0d1b2a] mb-8">Expert Qualifications</h2>
-                <ul className="space-y-5">
-                  {[
-                    "Specialist Deaf Tutor with extensive experience",
-                    "Degrees in Teaching and Deaf Education",
-                    "10+ Years Experience Working with Deaf Children",
-                    "Fluent in B.S.L (British Sign Language)",
-                  ].map((qual, i) => (
-                    <li key={i} className="flex items-start gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#0fa3a3] flex-shrink-0 mt-0.5 flex items-center justify-center">
-                        <CheckCircle2 className="w-4 h-4 text-white" />
-                      </div>
-                      <p className="text-lg text-[#0d1b2a]">{qual}</p>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-10">
-                  <Button
-                    asChild
-                    size="lg"
-                    variant="outline"
-                    className="rounded-xl border-2 border-[#0d1b2a] text-[#0d1b2a] hover:bg-[#0d1b2a] hover:text-white font-semibold text-base px-8 py-6 transition-all"
-                  >
-                    <Link href="/about">Learn More About Me</Link>
-                  </Button>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <Image
-                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1759346072605.png"
-                  alt="Tutoring Services"
-                  width={500}
-                  height={600}
-                  className="w-full max-w-md rounded-2xl shadow-xl shadow-[#0d1b2a]/10"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+        <QualificationsSection />
 
         {/* CTA Section */}
         <section className="py-20 bg-[#0d1b2a]">
