@@ -3,6 +3,7 @@ import Link from "next/link"
 import Navigation from "@/components/Navigation"
 import Footer from "@/components/Footer"
 import QualificationsSection from "@/components/QualificationsSection"
+import ShootingStars from "@/components/ShootingStars"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { BookOpen, Calculator, Users, ClipboardList, CheckCircle2 } from "lucide-react"
@@ -24,6 +25,8 @@ export default function Home() {
           {/* Subtle decorative aqua blob */}
           <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-[#b7e4e6]/30 blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-[#b7e4e6]/20 blur-3xl pointer-events-none" />
+          {/* Shooting stars */}
+          <ShootingStars count={10} />
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
