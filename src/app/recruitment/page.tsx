@@ -93,10 +93,23 @@ export default function RecruitmentPage() {
     e.preventDefault()
     if (!form.consent) { toast.error("Please tick the consent box before submitting."); return }
     setSubmitting(true)
-    // Simulate submission — wire to real endpoint as needed
-    await new Promise(r => setTimeout(r, 1200))
-    setSubmitting(false)
-    setSubmitted(true)
+    try {
+      const response = await fetch('/api/recruitment-application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      const data = await response.json()
+      if (response.ok) {
+        setSubmitted(true)
+      } else {
+        toast.error(data.error || 'Failed to send application. Please try again.')
+      }
+    } catch {
+      toast.error('Failed to send application. Please try again.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const scrollToForm = () => {
