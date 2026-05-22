@@ -40,6 +40,7 @@ export default function Footer() {
                 { href: "/about", label: "About" },
                 { href: "/how-it-works", label: "How It Works" },
                 { href: "/safeguarding", label: "Safeguarding" },
+                { href: "/recruitment", label: "Join Our Team" },
                 { href: "/contact", label: "Contact" },
               ].map((link) => (
                 <li key={link.href}>
