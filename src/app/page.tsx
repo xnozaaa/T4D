@@ -97,7 +97,7 @@ export default function Home() {
           <ShootingStars count={10} />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-7">
+              <div className="space-y-7 text-center lg:text-left">
                 <div className="inline-flex items-center gap-2 bg-[#b7e4e6]/60 text-[#0fa3a3] font-semibold text-sm px-4 py-1.5 rounded-full border border-[#0fa3a3]/20">
                   <span className="w-2 h-2 rounded-full bg-[#0fa3a3] animate-pulse" />
                   BSL-Supported · Specialist Deaf Education
@@ -109,7 +109,7 @@ export default function Home() {
                 <p className="text-xl text-[#0d1b2a]/70 leading-relaxed">
                   Accessible 1:1 tutoring designed for deaf and hearing-impaired learners — with clear communication, visual teaching methods and personalised support.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <Button asChild size="lg" className="rounded-xl bg-[#0fa3a3] hover:bg-[#0d8f8f] text-white font-semibold text-base px-8 py-6 shadow-md shadow-[#0fa3a3]/25 transition-all">
                     <Link href="/contact">Book a Free Consultation</Link>
                   </Button>
@@ -117,7 +117,7 @@ export default function Home() {
                     <Link href="/services">View Tutoring Services</Link>
                   </Button>
                 </div>
-                <div className="flex flex-wrap gap-3 pt-2">
+                <div className="flex flex-wrap gap-3 pt-2 justify-center lg:justify-start">
                   {trustBadges.map((b) => (
                     <div key={b.label} className="flex items-center gap-2 bg-white border border-[#b7e4e6] text-[#0d1b2a] text-xs font-medium px-3 py-1.5 rounded-full shadow-sm">
                       <span>{b.icon}</span>{b.label}
