@@ -94,10 +94,13 @@ export default function RecruitmentPage() {
     if (!form.consent) { toast.error("Please tick the consent box before submitting."); return }
     setSubmitting(true)
     try {
+      const fd = new FormData()
+      Object.entries(form).forEach(([k, v]) => fd.append(k, String(v)))
+      if (cvFile) fd.append('cv', cvFile)
+
       const response = await fetch('/api/recruitment-application', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: fd,
       })
       const data = await response.json()
       if (response.ok) {

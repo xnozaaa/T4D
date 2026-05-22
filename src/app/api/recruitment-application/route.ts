@@ -5,15 +5,38 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const {
-      fullName, email, phone, location, currentRole,
-      subjects, ageGroups, deafExperience, usesBsl, bslLevel,
-      hasQts, isToD, hasDbs, experience, whyJoin, availability,
-    } = body;
+    const formData = await request.formData();
+
+    const fullName      = formData.get('fullName') as string;
+    const email         = formData.get('email') as string;
+    const phone         = formData.get('phone') as string;
+    const location      = formData.get('location') as string;
+    const currentRole   = formData.get('currentRole') as string;
+    const subjects      = formData.get('subjects') as string;
+    const ageGroups     = formData.get('ageGroups') as string;
+    const deafExperience= formData.get('deafExperience') as string;
+    const usesBsl       = formData.get('usesBsl') as string;
+    const bslLevel      = formData.get('bslLevel') as string;
+    const hasQts        = formData.get('hasQts') as string;
+    const isToD         = formData.get('isToD') as string;
+    const hasDbs        = formData.get('hasDbs') as string;
+    const experience    = formData.get('experience') as string;
+    const whyJoin       = formData.get('whyJoin') as string;
+    const availability  = formData.get('availability') as string;
+    const cvFile        = formData.get('cv') as File | null;
 
     if (!fullName || !email || !experience || !whyJoin) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    }
+
+    // Build attachments array if a CV was uploaded
+    const attachments: { filename: string; content: Buffer }[] = [];
+    if (cvFile && cvFile.size > 0) {
+      const arrayBuffer = await cvFile.arrayBuffer();
+      attachments.push({
+        filename: cvFile.name,
+        content: Buffer.from(arrayBuffer),
+      });
     }
 
     const { data, error } = await resend.emails.send({
@@ -21,8 +44,10 @@ export async function POST(request: NextRequest) {
       to: ['tutoringforthedeaf@gmail.com'],
       replyTo: email,
       subject: `Tutor Application from ${fullName}`,
+      attachments,
       html: `
         <h2>New Tutor Expression of Interest</h2>
+        ${attachments.length > 0 ? `<p><em>CV attached: ${cvFile!.name}</em></p>` : ''}
 
         <h3>Personal Details</h3>
         <p><strong>Name:</strong> ${fullName}</p>
@@ -58,8 +83,8 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true, messageId: data?.id }, { status: 200 });
-  } catch (error) {
-    console.error('Recruitment email error:', error);
+  } catch (err) {
+    console.error('Recruitment email error:', err);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
