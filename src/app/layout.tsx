@@ -4,6 +4,7 @@ import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Tutoring for the Deaf - Personalised English & Maths Support",
@@ -43,6 +44,7 @@ export default function RootLayout({
         {children}
         <Toaster />
         <VisualEditsMessenger />
+        <Analytics />
       </body>
     </html>
   );
