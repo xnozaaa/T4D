@@ -1,10 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const destinationEmail =
+  process.env.CONTACT_FORM_TO_EMAIL?.trim() || 'tutoringforthedeaf@gmail.com';
+const senderEmail =
+  process.env.CONTACT_FORM_FROM_EMAIL?.trim() ||
+  'Tutoring Contact Form <onboarding@resend.dev>';
 
 export async function POST(request: NextRequest) {
   try {
+    const apiKey = process.env.RESEND_API_KEY?.trim();
+    if (!apiKey) {
+      console.error('Recruitment form email is not configured: RESEND_API_KEY is missing');
+      return NextResponse.json(
+        { error: 'Email service is temporarily unavailable. Please email tutoringforthedeaf@gmail.com directly.' },
+        { status: 503 }
+      );
+    }
+
     const formData = await request.formData();
 
     const fullName      = formData.get('fullName') as string;
@@ -39,9 +52,10 @@ export async function POST(request: NextRequest) {
       });
     }
 
+    const resend = new Resend(apiKey);
     const { data, error } = await resend.emails.send({
-      from: 'Tutoring Contact Form <onboarding@resend.dev>',
-      to: ['tutoringforthedeaf@gmail.com'],
+      from: senderEmail,
+      to: [destinationEmail],
       replyTo: email,
       subject: `Tutor Application from ${fullName}`,
       attachments,
