@@ -1,59 +1,111 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
+import {
+  cleanText,
+  escapeHtml,
+  guardPublicPost,
+  isValidEmail,
+} from "@/lib/request-security";
 
 const destinationEmail =
-  process.env.CONTACT_FORM_TO_EMAIL?.trim() || 'tutoringforthedeaf@gmail.com';
+  process.env.CONTACT_FORM_TO_EMAIL?.trim() || "tutoringforthedeaf@gmail.com";
 const senderEmail =
   process.env.CONTACT_FORM_FROM_EMAIL?.trim() ||
-  'Tutoring Contact Form <onboarding@resend.dev>';
+  "Tutoring Contact Form <onboarding@resend.dev>";
+const allowedFileTypes = new Set([
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+]);
+const allowedFileExtensions = new Set(["pdf", "doc", "docx"]);
+
+function safeFilename(value: string) {
+  const cleaned = value.replace(/[^a-zA-Z0-9._ -]/g, "_").slice(0, 120);
+  return cleaned || "cv";
+}
 
 export async function POST(request: NextRequest) {
+  const blocked = guardPublicPost(request, {
+    scope: "recruitment",
+    limit: 5,
+    maxBodyBytes: 5_500_000,
+    windowMs: 30 * 60 * 1000,
+  });
+  if (blocked) {
+    return NextResponse.json({ error: blocked.error }, { status: blocked.status });
+  }
+
   try {
     const apiKey = process.env.RESEND_API_KEY?.trim();
     if (!apiKey) {
-      console.error('Recruitment form email is not configured: RESEND_API_KEY is missing');
       return NextResponse.json(
-        { error: 'Email service is temporarily unavailable. Please email tutoringforthedeaf@gmail.com directly.' },
-        { status: 503 }
+        {
+          error:
+            "Email service is temporarily unavailable. Please email tutoringforthedeaf@gmail.com directly.",
+        },
+        { status: 503 },
       );
     }
 
     const formData = await request.formData();
+    const fullName = cleanText(formData.get("fullName"), 120);
+    const email = cleanText(formData.get("email"), 254).toLowerCase();
+    const phone = cleanText(formData.get("phone"), 40);
+    const location = cleanText(formData.get("location"), 160);
+    const currentRole = cleanText(formData.get("currentRole"), 200);
+    const subjects = cleanText(formData.get("subjects"), 500);
+    const ageGroups = cleanText(formData.get("ageGroups"), 300);
+    const deafExperience = cleanText(formData.get("deafExperience"), 40);
+    const usesBsl = cleanText(formData.get("usesBsl"), 40);
+    const bslLevel = cleanText(formData.get("bslLevel"), 120);
+    const hasQts = cleanText(formData.get("hasQts"), 40);
+    const isToD = cleanText(formData.get("isToD"), 40);
+    const hasDbs = cleanText(formData.get("hasDbs"), 40);
+    const experience = cleanText(formData.get("experience"), 5_000);
+    const whyJoin = cleanText(formData.get("whyJoin"), 5_000);
+    const availability = cleanText(formData.get("availability"), 500);
+    const consent = cleanText(formData.get("consent"), 5);
+    const cvValue = formData.get("cv");
+    const cvFile = cvValue instanceof File ? cvValue : null;
 
-    const fullName      = formData.get('fullName') as string;
-    const email         = formData.get('email') as string;
-    const phone         = formData.get('phone') as string;
-    const location      = formData.get('location') as string;
-    const currentRole   = formData.get('currentRole') as string;
-    const subjects      = formData.get('subjects') as string;
-    const ageGroups     = formData.get('ageGroups') as string;
-    const deafExperience= formData.get('deafExperience') as string;
-    const usesBsl       = formData.get('usesBsl') as string;
-    const bslLevel      = formData.get('bslLevel') as string;
-    const hasQts        = formData.get('hasQts') as string;
-    const isToD         = formData.get('isToD') as string;
-    const hasDbs        = formData.get('hasDbs') as string;
-    const experience    = formData.get('experience') as string;
-    const whyJoin       = formData.get('whyJoin') as string;
-    const availability  = formData.get('availability') as string;
-    const cvFile        = formData.get('cv') as File | null;
-
-    if (!fullName || !email || !experience || !whyJoin) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    if (
+      !fullName ||
+      !isValidEmail(email) ||
+      !subjects ||
+      experience.length < 20 ||
+      whyJoin.length < 20 ||
+      consent !== "true"
+    ) {
+      return NextResponse.json(
+        { error: "Please check the required fields and confirm your consent." },
+        { status: 400 },
+      );
     }
 
-    // Build attachments array if a CV was uploaded
     const attachments: { filename: string; content: Buffer }[] = [];
+    let cvFilename = "";
     if (cvFile && cvFile.size > 0) {
-      const arrayBuffer = await cvFile.arrayBuffer();
+      const extension = cvFile.name.split(".").pop()?.toLowerCase() || "";
+      if (
+        cvFile.size > 5_000_000 ||
+        !allowedFileTypes.has(cvFile.type) ||
+        !allowedFileExtensions.has(extension)
+      ) {
+        return NextResponse.json(
+          { error: "Your CV must be a PDF, DOC or DOCX file no larger than 5MB." },
+          { status: 400 },
+        );
+      }
+
+      cvFilename = safeFilename(cvFile.name);
       attachments.push({
-        filename: cvFile.name,
-        content: Buffer.from(arrayBuffer),
+        filename: cvFilename,
+        content: Buffer.from(await cvFile.arrayBuffer()),
       });
     }
 
-    const resend = new Resend(apiKey);
-    const { data, error } = await resend.emails.send({
+    const optional = (value: string) => escapeHtml(value || "Not provided");
+    const { error } = await new Resend(apiKey).emails.send({
       from: senderEmail,
       to: [destinationEmail],
       replyTo: email,
@@ -61,44 +113,42 @@ export async function POST(request: NextRequest) {
       attachments,
       html: `
         <h2>New Tutor Expression of Interest</h2>
-        ${attachments.length > 0 ? `<p><em>CV attached: ${cvFile!.name}</em></p>` : ''}
-
+        ${cvFilename ? `<p><em>CV attached: ${escapeHtml(cvFilename)}</em></p>` : ""}
         <h3>Personal Details</h3>
-        <p><strong>Name:</strong> ${fullName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-        <p><strong>Location / Time Zone:</strong> ${location || 'Not provided'}</p>
-        <p><strong>Current Role:</strong> ${currentRole || 'Not provided'}</p>
-
+        <p><strong>Name:</strong> ${escapeHtml(fullName)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Phone:</strong> ${optional(phone)}</p>
+        <p><strong>Location / Time Zone:</strong> ${optional(location)}</p>
+        <p><strong>Current Role:</strong> ${optional(currentRole)}</p>
         <h3>Teaching Details</h3>
-        <p><strong>Subjects:</strong> ${subjects || 'Not provided'}</p>
-        <p><strong>Age Groups / Key Stages:</strong> ${ageGroups || 'Not provided'}</p>
-
+        <p><strong>Subjects:</strong> ${escapeHtml(subjects)}</p>
+        <p><strong>Age Groups / Key Stages:</strong> ${optional(ageGroups)}</p>
         <h3>Deaf Awareness &amp; Communication</h3>
-        <p><strong>Experience with Deaf / HI Learners:</strong> ${deafExperience || 'Not provided'}</p>
-        <p><strong>Uses BSL:</strong> ${usesBsl || 'Not provided'}</p>
-        <p><strong>BSL Level:</strong> ${bslLevel || 'Not provided'}</p>
-
+        <p><strong>Experience with Deaf / HI Learners:</strong> ${optional(deafExperience)}</p>
+        <p><strong>Uses BSL:</strong> ${optional(usesBsl)}</p>
+        <p><strong>BSL Level:</strong> ${optional(bslLevel)}</p>
         <h3>Qualifications &amp; Checks</h3>
-        <p><strong>QTS:</strong> ${hasQts || 'Not provided'}</p>
-        <p><strong>Teacher of the Deaf:</strong> ${isToD || 'Not provided'}</p>
-        <p><strong>Enhanced DBS:</strong> ${hasDbs || 'Not provided'}</p>
-
+        <p><strong>QTS:</strong> ${optional(hasQts)}</p>
+        <p><strong>Teacher of the Deaf:</strong> ${optional(isToD)}</p>
+        <p><strong>Enhanced DBS:</strong> ${optional(hasDbs)}</p>
         <h3>Experience &amp; Motivation</h3>
-        <p><strong>Teaching / Tutoring Experience:</strong><br>${experience.replace(/\n/g, '<br>')}</p>
-        <p><strong>Why Join Tutoring for the Deaf:</strong><br>${whyJoin.replace(/\n/g, '<br>')}</p>
-        <p><strong>Availability:</strong> ${availability || 'Not provided'}</p>
+        <p><strong>Teaching / Tutoring Experience:</strong><br>${escapeHtml(experience).replaceAll("\n", "<br>")}</p>
+        <p><strong>Why Join Tutoring for the Deaf:</strong><br>${escapeHtml(whyJoin).replaceAll("\n", "<br>")}</p>
+        <p><strong>Availability:</strong> ${optional(availability)}</p>
+        <p><strong>Consent confirmed:</strong> Yes</p>
       `,
     });
 
     if (error) {
-      console.error('Resend error:', error);
-      return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+      console.error("Resend recruitment delivery failed");
+      return NextResponse.json({ error: "Failed to send application" }, { status: 500 });
     }
 
-    return NextResponse.json({ success: true, messageId: data?.id }, { status: 200 });
-  } catch (err) {
-    console.error('Recruitment email error:', err);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return NextResponse.json({ success: true });
+  } catch {
+    return NextResponse.json(
+      { error: "Unable to process the application. Please check the form and try again." },
+      { status: 500 },
+    );
   }
 }
