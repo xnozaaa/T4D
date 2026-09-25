@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { CHILD_SUPPORT_NEEDS_CONSENT } from "@/lib/privacy-consent";
 import {
   cleanText,
   escapeHtml,
@@ -62,6 +63,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (body.specialCategoryConsent !== true) {
+      return NextResponse.json(
+        { error: "Please confirm the consent statement before sending your enquiry." },
+        { status: 400 },
+      );
+    }
+
     const optional = (value: string) => escapeHtml(value || "Not provided");
     const { error } = await new Resend(apiKey).emails.send({
       from: senderEmail,
@@ -80,6 +88,9 @@ export async function POST(request: NextRequest) {
         <p><strong>Preferred Lesson Times:</strong> ${optional(preferredTimes)}</p>
         <p><strong>Preferred Contact Method:</strong> ${optional(preferredContact)}</p>
         <p><strong>How You Heard About Us:</strong> ${escapeHtml(heardAboutUs)}</p>
+        <p><strong>Consent to use student support-needs information:</strong> Yes</p>
+        <p><strong>Consent statement:</strong> ${escapeHtml(CHILD_SUPPORT_NEEDS_CONSENT)}</p>
+        <p><strong>Consent recorded at:</strong> ${new Date().toISOString()}</p>
         <h3>Additional Information:</h3>
         <p>${optional(message).replaceAll("\n", "<br>")}</p>
       `,

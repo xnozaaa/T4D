@@ -109,9 +109,10 @@ export default function Footer() {
           <p className="text-[#b7e4e6]/50 text-sm">
             © {new Date().getFullYear()} Tutoring for the Deaf. All rights reserved.
           </p>
-          <p className="text-[#b7e4e6]/40 text-xs">
-            Specialist Deaf Tutor · BSL Fluent · 10+ Years Experience
-          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm">
+            <Link href="/privacy" className="text-[#b7e4e6]/70 hover:text-white">Privacy &amp; Cookies</Link>
+            <span className="text-[#b7e4e6]/40">Specialist Deaf Tutor · BSL Fluent · 10+ Years Experience</span>
+          </div>
         </div>
       </div>
     </footer>

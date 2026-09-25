@@ -63,11 +63,11 @@ const sections = [
   },
   {
     title: "Confidentiality",
-    content: "Information shared by students and families is treated with respect and confidentiality. Personal information is not shared with third parties except where required by safeguarding obligations.",
+    content: "Information shared by students and families is treated with respect and confidentiality. It is only shared where needed to provide the service, with trusted service providers, or where required for safeguarding or by law. See our Privacy & Cookies notice for details.",
     points: [
       "Personal information is kept private and secure",
       "Session content is treated confidentially",
-      "Information will only be shared if there is a safeguarding concern that requires it",
+      "Information is only shared when there is a clear service, safeguarding or legal reason",
     ],
   },
 ]
@@ -113,6 +113,11 @@ export default function SafeguardingPage() {
                         </li>
                       ))}
                     </ul>
+                    {section.title === "Confidentiality" && (
+                      <Link href="/privacy" className="mt-4 inline-block text-sm font-semibold text-[#0d8f8f] underline underline-offset-2">
+                        Read our Privacy &amp; Cookies notice
+                      </Link>
+                    )}
                   </CardContent>
                 </Card>
               ))}

@@ -1,0 +1,2 @@
+export const CHILD_SUPPORT_NEEDS_CONSENT =
+  "I confirm I am the parent/carer or authorised to share this information. I explicitly consent to Tutoring for the Deaf using any information I provide about the student's deafness, hearing, communication or other support needs solely to respond to this enquiry and assess suitable tutoring support. I understand I can withdraw this consent by emailing tutoringforthedeaf@gmail.com.";

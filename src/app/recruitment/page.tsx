@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label"
 import { CheckCircle2, ChevronRight, Shield, Send } from "lucide-react"
 import { useState, useRef } from "react"
 import { toast } from "sonner"
+import Link from "next/link"
 
 const whoWeWant = [
   "Qualified teachers",
@@ -91,7 +92,7 @@ export default function RecruitmentPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!form.consent) { toast.error("Please tick the consent box before submitting."); return }
+    if (!form.consent) { toast.error("Please confirm the statement before submitting."); return }
     setSubmitting(true)
     try {
       const fd = new FormData()
@@ -478,14 +479,18 @@ export default function RecruitmentPage() {
                         <input
                           type="checkbox"
                           name="consent"
+                          required
                           checked={form.consent}
                           onChange={handleChange}
                           className="mt-1 w-4 h-4 accent-[#0fa3a3] flex-shrink-0"
                         />
                         <span className="text-sm text-[#0d1b2a]/70 leading-relaxed group-hover:text-[#0d1b2a] transition-colors">
-                          I confirm that the information provided is accurate and I consent to Tutoring for the Deaf contacting me about tutoring opportunities.
+                          I confirm that the information provided is accurate and understand it will be used to assess and respond to my expression of interest.
                         </span>
                       </label>
+                      <p className="mt-2 text-xs text-[#0d1b2a]/60">
+                        Read how we handle your information in our <Link href="/privacy" className="font-medium text-[#0d8f8f] underline underline-offset-2">Privacy &amp; Cookies notice</Link>.
+                      </p>
                     </div>
 
                     <Button

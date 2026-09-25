@@ -10,6 +10,8 @@ import { Label } from "@/components/ui/label"
 import { Mail, Globe, Send, CheckCircle2 } from "lucide-react"
 import { useState } from "react"
 import { toast } from "sonner"
+import Link from "next/link"
+import { CHILD_SUPPORT_NEEDS_CONSENT } from "@/lib/privacy-consent"
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -22,7 +24,7 @@ function TikTokIcon({ className }: { className?: string }) {
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "", email: "", phone: "", yearGroup: "", subject: "",
-    usesBsl: "", goal: "", preferredTimes: "", preferredContact: "", heardAboutUs: "", message: ""
+    usesBsl: "", goal: "", preferredTimes: "", preferredContact: "", heardAboutUs: "", message: "", specialCategoryConsent: false
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -37,7 +39,7 @@ export default function ContactPage() {
       const data = await response.json()
       if (response.ok) {
         toast.success("Message sent! We'll be in touch soon.")
-        setFormData({ name: "", email: "", phone: "", yearGroup: "", subject: "", usesBsl: "", goal: "", preferredTimes: "", preferredContact: "", heardAboutUs: "", message: "" })
+        setFormData({ name: "", email: "", phone: "", yearGroup: "", subject: "", usesBsl: "", goal: "", preferredTimes: "", preferredContact: "", heardAboutUs: "", message: "", specialCategoryConsent: false })
       } else {
         toast.error(data.error || 'Failed to send message. Please try again.')
       }
@@ -49,7 +51,12 @@ export default function ContactPage() {
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+    const { name, type, value } = e.target
+    const checked = (e.target as HTMLInputElement).checked
+    setFormData(previous => ({
+      ...previous,
+      [name]: type === "checkbox" ? checked : value,
+    }))
   }
 
   return (
@@ -147,8 +154,14 @@ export default function ContactPage() {
                         <Label htmlFor="message" className="text-sm font-semibold text-[#0d1b2a]">Anything Else You Would Like Us to Know?</Label>
                         <Textarea id="message" name="message" placeholder="Any additional context, questions, or information about your child's needs..." value={formData.message} onChange={handleChange} disabled={isSubmitting} rows={5} className="rounded-xl border-[#b7e4e6] resize-none" />
                       </div>
-                      <p className="text-xs text-[#0d1b2a]/45 leading-relaxed">
-                        Your information will only be used to respond to your enquiry and discuss tutoring support. It will not be shared with third parties.
+                      <div className="rounded-xl border border-[#b7e4e6] bg-[#b7e4e6]/10 p-4">
+                        <label htmlFor="specialCategoryConsent" className="flex items-start gap-3 text-sm leading-relaxed text-[#0d1b2a]/80">
+                          <input id="specialCategoryConsent" name="specialCategoryConsent" type="checkbox" required checked={formData.specialCategoryConsent} onChange={handleChange} disabled={isSubmitting} className="mt-1 h-4 w-4 flex-shrink-0 accent-[#0fa3a3]" />
+                          <span>{CHILD_SUPPORT_NEEDS_CONSENT}</span>
+                        </label>
+                      </div>
+                      <p className="text-xs text-[#0d1b2a]/60 leading-relaxed">
+                        Please share only information needed for this enquiry, not full medical records. We use hosting and email providers to deliver your message. Read our <Link href="/privacy" className="font-medium text-[#0d8f8f] underline underline-offset-2">Privacy &amp; Cookies notice</Link> for details.
                       </p>
                       <Button type="submit" size="lg" disabled={isSubmitting} className="w-full rounded-xl bg-[#0fa3a3] hover:bg-[#0d8f8f] text-white font-semibold text-base h-12 disabled:opacity-50 shadow-md shadow-[#0fa3a3]/20 transition-all">
                         <Send className="w-5 h-5 mr-2" />

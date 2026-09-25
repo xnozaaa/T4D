@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
       consent !== "true"
     ) {
       return NextResponse.json(
-        { error: "Please check the required fields and confirm your consent." },
+        { error: "Please check the required fields and confirm the statement." },
         { status: 400 },
       );
     }
@@ -135,7 +135,7 @@ export async function POST(request: NextRequest) {
         <p><strong>Teaching / Tutoring Experience:</strong><br>${escapeHtml(experience).replaceAll("\n", "<br>")}</p>
         <p><strong>Why Join Tutoring for the Deaf:</strong><br>${escapeHtml(whyJoin).replaceAll("\n", "<br>")}</p>
         <p><strong>Availability:</strong> ${optional(availability)}</p>
-        <p><strong>Consent confirmed:</strong> Yes</p>
+        <p><strong>Applicant confirmed accuracy and understood the stated use:</strong> Yes</p>
       `,
     });
 
