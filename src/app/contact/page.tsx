@@ -22,7 +22,7 @@ function TikTokIcon({ className }: { className?: string }) {
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "", email: "", phone: "", yearGroup: "", subject: "",
-    usesBsl: "", goal: "", preferredTimes: "", preferredContact: "", message: ""
+    usesBsl: "", goal: "", preferredTimes: "", preferredContact: "", heardAboutUs: "", message: ""
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -37,7 +37,7 @@ export default function ContactPage() {
       const data = await response.json()
       if (response.ok) {
         toast.success("Message sent! We'll be in touch soon.")
-        setFormData({ name: "", email: "", phone: "", yearGroup: "", subject: "", usesBsl: "", goal: "", preferredTimes: "", preferredContact: "", message: "" })
+        setFormData({ name: "", email: "", phone: "", yearGroup: "", subject: "", usesBsl: "", goal: "", preferredTimes: "", preferredContact: "", heardAboutUs: "", message: "" })
       } else {
         toast.error(data.error || 'Failed to send message. Please try again.')
       }
@@ -138,6 +138,10 @@ export default function ContactPage() {
                             {["Email","Phone call","Either is fine"].map(o => <option key={o} value={o}>{o}</option>)}
                           </select>
                         </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="heardAboutUs" className="text-sm font-semibold text-[#0d1b2a]">How Did You Hear About Us? *</Label>
+                        <Input id="heardAboutUs" name="heardAboutUs" placeholder="e.g. Google, social media, a friend or your child's school" required maxLength={200} value={formData.heardAboutUs} onChange={handleChange} disabled={isSubmitting} className="h-11 rounded-xl border-[#b7e4e6]" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="message" className="text-sm font-semibold text-[#0d1b2a]">Anything Else You Would Like Us to Know?</Label>

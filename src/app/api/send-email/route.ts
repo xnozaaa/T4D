@@ -45,11 +45,19 @@ export async function POST(request: NextRequest) {
     const goal = cleanText(body.goal, 500);
     const preferredTimes = cleanText(body.preferredTimes, 300);
     const preferredContact = cleanText(body.preferredContact, 40);
+    const heardAboutUs = cleanText(body.heardAboutUs, 200);
     const message = cleanText(body.message, 3_000);
 
     if (!name || !isValidEmail(email)) {
       return NextResponse.json(
         { error: "Please enter a valid name and email address." },
+        { status: 400 },
+      );
+    }
+
+    if (!heardAboutUs) {
+      return NextResponse.json(
+        { error: "Please tell us how you heard about us." },
         { status: 400 },
       );
     }
@@ -71,6 +79,7 @@ export async function POST(request: NextRequest) {
         <p><strong>Main Tutoring Goal:</strong> ${optional(goal)}</p>
         <p><strong>Preferred Lesson Times:</strong> ${optional(preferredTimes)}</p>
         <p><strong>Preferred Contact Method:</strong> ${optional(preferredContact)}</p>
+        <p><strong>How You Heard About Us:</strong> ${escapeHtml(heardAboutUs)}</p>
         <h3>Additional Information:</h3>
         <p>${optional(message).replaceAll("\n", "<br>")}</p>
       `,
