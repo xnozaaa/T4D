@@ -114,6 +114,12 @@ export default function Footer() {
             <span className="text-[#b7e4e6]/40">Specialist Deaf Tutor · BSL Fluent · 10+ Years Experience</span>
           </div>
         </div>
+        <p className="mt-4 text-center text-xs text-[#b7e4e6]/70">
+          Created by{" "}
+          <a href="https://yulaverse.co.uk/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-8 items-center underline-offset-4 hover:text-white hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+            Yulaverse Studio
+          </a>
+        </p>
       </div>
     </footer>
   )
